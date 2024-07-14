@@ -1,0 +1,501 @@
+,city,longitude,latitude,review_scores_rating,number_of_reviews,minimum_nights,security_deposit,cleaning_fee,accommodates,bathrooms,bedrooms,beds,property_type,room_type,availability_365,host_identity_verified,host_is_superhost,cancellation_policy,price
+94,Sydney,151.2085488,-33.87723867,93.0,3,7,250,150,2,1.0,1.0,1.0,Apartment,Entire home/apt,355,0,0,strict_14_with_grace_period,179
+638,North Bondi,151.2695392,-33.88024105,93.41241287,0,4,0,15,1,1.0,1.0,1.0,Apartment,Private room,2,0,0,flexible,80
+4111,Randwick,151.2393843,-33.91476754,100.0,1,2,0,9,1,1.0,1.0,1.0,Apartment,Shared room,16,1,0,flexible,30
+6658,Avalon Beach,151.3265759,-33.63076223,100.0,2,5,1000,250,6,2.0,4.0,5.0,House,Entire home/apt,186,1,0,strict_14_with_grace_period,451
+6821,Paddington,151.2252374,-33.88047321,93.41241287,0,4,1000,150,6,1.5,3.0,3.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,401
+7365,Homebush,151.076959,-33.86240628,93.41241287,0,1,0,10,2,2.0,1.0,2.0,Apartment,Private room,0,1,0,flexible,59
+981,Forest Lodge,151.1806537,-33.88048874,95.0,54,2,800,80,3,1.0,0.0,1.0,Apartment,Entire home/apt,152,0,1,strict_14_with_grace_period,128
+3228,Camperdown,151.1815604,-33.88425751,98.0,67,4,0,0,2,1.0,0.0,1.0,Apartment,Entire home/apt,156,0,0,strict_14_with_grace_period,120
+6238,Darlinghurst,151.2126342,-33.87700853,90.0,64,2,450,129,4,1.0,1.0,2.0,Apartment,Entire home/apt,159,1,0,strict_14_with_grace_period,183
+1194,Warrawee,151.1257803,-33.72836329,96.0,10,1,0,10,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,78
+8862,Frenchs Forest,151.2251811,-33.74498006,72.0,5,3,0,0,2,1.0,2.0,2.0,House,Private room,23,1,0,flexible,30
+5582,Ryde,151.1077439,-33.81409879,93.41241287,0,2,128,50,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,strict_14_with_grace_period,55
+3154,The Rocks,151.2070139,-33.86191495,93.41241287,0,1,0,0,2,1.0,1.0,1.0,Boutique hotel,Private room,0,1,0,moderate,185
+8677,Maroubra,151.2354507,-33.93999463,100.0,7,2,0,25,2,1.0,1.0,1.0,Apartment,Private room,124,1,0,strict_14_with_grace_period,70
+4264,Edgecliff,151.2324542,-33.87686145,87.0,8,3,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,flexible,80
+1166,Coogee,151.2538145,-33.92636909,100.0,3,4,0,50,6,1.0,3.0,3.0,Apartment,Entire home/apt,0,0,0,moderate,198
+8291,Breakfast Point,151.1075262,-33.84118861,87.0,13,2,0,95,3,1.0,2.0,2.0,Apartment,Entire home/apt,153,0,0,strict_14_with_grace_period,150
+3946,Hornsby,151.103135,-33.69966977,80.0,1,3,0,0,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,120
+6325,Newtown,151.1785221,-33.89401476,90.0,2,2,0,25,2,2.0,1.0,1.0,House,Private room,0,1,0,moderate,70
+9401,Redfern,151.2111566,-33.89656259,100.0,1,4,0,20,2,1.0,1.0,1.0,House,Private room,0,0,0,flexible,74
+7104,Avalon Beach,151.3183619,-33.617925,60.0,2,2,0,0,2,1.0,1.0,1.0,House,Private room,362,0,0,flexible,289
+3277,Bondi Beach,151.2720407,-33.88897599,92.0,72,1,300,126,2,1.0,1.0,1.0,Apartment,Entire home/apt,195,0,0,moderate,125
+1050,Castle Hill,151.0048823,-33.73837718,98.0,8,1,0,30,2,1.0,1.0,1.0,Guest suite,Private room,175,1,1,flexible,65
+7242,Brooklyn,151.2043752,-33.54904609,93.41241287,0,1,250,0,4,1.0,1.0,2.0,House,Entire home/apt,89,0,0,strict_14_with_grace_period,750
+1549,Bronte,151.2609713,-33.89850195,96.0,9,8,500,90,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,200
+1913,Alexandria,151.1999608,-33.90347311,97.0,101,4,500,50,2,1.5,1.0,1.0,Apartment,Entire home/apt,296,0,0,moderate,130
+6303,Surry Hills,151.2131051,-33.8795467,90.0,83,1,500,99,2,1.0,0.0,1.0,Apartment,Entire home/apt,166,1,0,strict_14_with_grace_period,98
+8726,Parramatta,151.0090696,-33.81476861,90.0,4,2,0,0,4,1.0,1.0,2.0,Apartment,Entire home/apt,31,1,0,flexible,120
+5617,Sydney,151.2081436,-33.8649557,86.0,40,2,0,275,4,1.0,2.0,2.0,Apartment,Entire home/apt,355,1,0,moderate,229
+5668,Palm Beach,151.3324786,-33.60485055,93.41241287,0,2,2000,350,8,3.0,4.0,4.0,House,Entire home/apt,143,0,0,strict_14_with_grace_period,1524
+7557,Fairlight,151.2719225,-33.79848735,93.0,3,2,500,219,5,1.0,3.0,3.0,Apartment,Entire home/apt,15,0,0,flexible,375
+3497,Bondi,151.2686204,-33.89388254,93.41241287,1,3,0,0,2,1.0,1.0,1.0,Apartment,Private room,89,1,0,flexible,100
+755,Dee Why,151.2946789,-33.75535531,100.0,1,5,500,0,1,1.5,1.0,1.0,Bed and breakfast,Private room,365,0,0,strict_14_with_grace_period,250
+89,Saint Leonards,151.1942971,-33.8204237,96.0,24,1,500,65,4,2.0,2.0,2.0,Apartment,Entire home/apt,5,1,1,flexible,229
+8924,Kingsford,151.2339019,-33.92138584,100.0,2,4,0,0,2,1.5,1.0,1.0,Apartment,Private room,0,0,0,flexible,45
+3263,Narrabeen,151.2999769,-33.71072104,100.0,4,2,1000,50,3,1.0,1.0,2.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,96
+8927,Newtown,151.174349,-33.8935791,100.0,1,1,300,0,2,1.0,1.0,1.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,111
+1943,Mascot,151.1894669,-33.923236,100.0,8,2,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,flexible,120
+7563,Maroubra,151.2493227,-33.95223126,80.0,2,3,150,60,4,2.0,2.0,2.0,House,Entire home/apt,90,1,0,strict_14_with_grace_period,225
+1916,Bronte,151.2597063,-33.9072121,93.41241287,0,7,500,70,2,1.0,1.0,1.0,Apartment,Private room,365,1,0,strict_14_with_grace_period,161
+433,Freshwater,151.2791179,-33.77651892,100.0,9,3,0,0,2,1.0,1.0,1.0,Apartment,Private room,71,0,1,flexible,49
+9314,Bondi Beach,151.2671418,-33.88728707,100.0,3,7,0,79,2,1.0,0.0,1.0,Apartment,Entire home/apt,43,1,0,strict_14_with_grace_period,59
+3461,Dulwich Hill,151.1385328,-33.91051359,95.0,8,2,300,60,5,1.0,2.0,4.0,Apartment,Entire home/apt,35,1,1,moderate,150
+5788,Scotland Island,151.2945912,-33.64220768,100.0,1,2,1000,120,2,1.0,1.0,2.0,Cabin,Private room,364,1,0,strict_14_with_grace_period,210
+2336,Surry Hills,151.2133893,-33.87750519,96.0,57,1,0,40,2,1.0,1.0,1.0,Condominium,Private room,12,1,0,moderate,93
+529,Parramatta,151.0055153,-33.810008,94.0,14,180,360,149,6,2.0,3.0,3.0,Apartment,Entire home/apt,278,0,0,moderate,199
+9882,Bondi Beach,151.2790086,-33.88081693,100.0,17,3,500,105,2,1.0,1.0,1.0,Apartment,Entire home/apt,144,1,1,strict_14_with_grace_period,94
+8719,Scotland Island,151.2953009,-33.64080314,96.0,15,2,2000,180,2,1.0,1.0,1.0,Cabin,Entire home/apt,362,1,0,strict_14_with_grace_period,360
+5555,Alexandria,151.1877754,-33.90683208,95.0,30,7,0,60,2,1.0,1.0,1.0,Apartment,Private room,1,1,1,moderate,59
+3119,Manly,151.284259,-33.79835509,93.41241287,0,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,flexible,70
+9545,Surry Hills,151.2137232,-33.88108778,93.41241287,0,1,0,0,2,1.0,1.0,2.0,Apartment,Private room,0,0,0,flexible,70
+1593,Bellevue Hill,151.2565743,-33.88914156,93.41241287,0,7,200,20,1,1.0,1.0,1.0,House,Private room,0,1,0,moderate,70
+4473,Rozelle,151.1729075,-33.86748598,100.0,1,2,0,0,6,3.0,3.0,3.0,House,Entire home/apt,0,0,0,moderate,250
+4582,Mosman,151.2505281,-33.83970177,100.0,4,1,0,30,4,1.0,2.0,2.0,House,Private room,8,1,1,flexible,220
+6275,Longueville,151.1644977,-33.83208258,97.0,51,1,0,0,2,1.0,1.0,1.0,House,Private room,241,0,1,moderate,65
+3681,Marrickville,151.1588827,-33.900824,93.41241287,0,1,0,0,1,2.0,1.0,1.0,House,Private room,0,0,0,flexible,32
+2567,Bondi Beach,151.2739217,-33.88967788,87.0,9,5,300,100,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,173
+4100,Clovelly,151.2643551,-33.9124658,93.41241287,0,6,0,0,6,1.0,3.0,3.0,House,Entire home/apt,0,1,0,flexible,233
+4937,Mosman,151.2458331,-33.82321169,97.0,62,2,0,40,2,1.0,1.0,2.0,Apartment,Private room,132,1,1,moderate,59
+7360,Haymarket,151.2017417,-33.88072138,93.0,64,1,139,70,4,1.0,1.0,2.0,Apartment,Entire home/apt,219,1,0,strict_14_with_grace_period,169
+5170,Bondi,151.2630363,-33.89325279,93.0,57,1,0,40,3,1.0,0.0,2.0,Apartment,Entire home/apt,110,0,0,strict_14_with_grace_period,120
+2710,Glebe,151.1877264,-33.87592188,80.0,1,1,0,0,2,1.5,1.0,1.0,House,Private room,0,1,0,flexible,100
+4194,Redfern,151.2112946,-33.89552345,100.0,1,2,200,50,2,2.0,1.0,1.0,House,Private room,89,0,0,moderate,120
+1678,Maroubra,151.2522917,-33.94476547,90.0,2,13,500,0,3,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,moderate,74
+5002,Avalon Beach,151.3311334,-33.63800377,80.0,1,2,800,50,3,1.0,2.0,2.0,Apartment,Entire home/apt,179,0,0,moderate,200
+4930,Maianbar,151.1296147,-34.07975891,93.41241287,0,5,500,100,8,1.5,3.0,4.0,House,Entire home/apt,0,0,0,moderate,490
+7843,Bondi,151.2720217,-33.89592246,96.0,29,5,500,200,3,1.0,2.0,2.0,Apartment,Entire home/apt,364,1,0,strict_14_with_grace_period,250
+6327,Crows Nest,151.2034967,-33.82785132,100.0,1,5,0,0,1,1.0,1.0,1.0,House,Private room,0,1,0,flexible,110
+4005,Beaconsfield,151.2013063,-33.91009309,100.0,1,2,0,0,2,1.0,0.0,1.0,House,Private room,0,0,0,flexible,65
+9646,Manly,151.2847665,-33.79828175,97.0,82,2,1000,175,4,1.0,2.0,4.0,Apartment,Entire home/apt,186,0,1,moderate,190
+4,North Bondi,151.2751434,-33.8839576,93.41241287,0,7,5000,540,12,4.0,6.0,7.0,House,Entire home/apt,63,1,0,strict_14_with_grace_period,2550
+4385,Avalon,151.3184357,-33.6257993,98.0,88,2,200,50,2,1.0,1.0,1.0,House,Entire home/apt,262,0,1,strict_14_with_grace_period,179
+7817,Bondi,151.2621095,-33.89661336,93.41241287,0,14,0,0,2,1.0,1.0,2.0,House,Private room,0,0,0,flexible,119
+3665,Mosman,151.2340472,-33.82610067,100.0,3,7,500,200,6,2.0,3.0,4.0,House,Entire home/apt,18,1,0,strict_14_with_grace_period,501
+5340,Woollahra,151.2453634,-33.88857742,93.41241287,0,7,2000,300,10,4.0,5.0,7.0,House,Entire home/apt,351,0,0,strict_14_with_grace_period,1000
+3847,Darlinghurst,151.2189047,-33.8756742,80.0,3,3,0,10,2,1.0,0.0,2.0,Apartment,Entire home/apt,0,1,0,flexible,30
+9595,Bondi Beach,151.2687872,-33.89076236,100.0,1,3,0,0,1,1.0,1.0,1.0,House,Private room,0,0,0,moderate,61
+4689,Redfern,151.1994166,-33.89333393,100.0,8,2,200,40,2,1.0,1.0,1.0,Condominium,Private room,41,0,0,strict_14_with_grace_period,100
+2352,Paddington,151.2308834,-33.88379812,87.0,3,2,0,55,3,1.0,2.0,1.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,135
+2953,Bondi Beach,151.2712488,-33.89811614,90.0,114,1,500,149,4,1.0,2.0,2.0,Apartment,Entire home/apt,325,0,0,strict_14_with_grace_period,148
+3329,Riverwood,151.0631108,-33.94639213,93.0,14,1,150,40,3,1.0,1.0,1.0,Villa,Private room,340,0,0,moderate,59
+3502,Rose Bay,151.2738141,-33.87392422,93.41241287,0,7,1000,250,4,1.0,2.0,4.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,200
+8375,Cremorne Point,151.2266762,-33.83909577,95.0,19,2,300,75,2,1.0,0.0,1.0,Apartment,Entire home/apt,337,1,1,strict_14_with_grace_period,115
+8698,Milperra,150.988737,-33.93939311,100.0,3,5,300,100,1,1.0,1.0,1.0,House,Private room,89,1,0,moderate,30
+998,Pyrmont,151.1965246,-33.87181811,93.41241287,0,4,800,200,6,2.0,3.0,3.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,1000
+9455,Cremorne,151.2273233,-33.83591353,90.0,5,2,0,30,2,2.0,1.0,1.0,House,Private room,0,1,0,moderate,70
+6610,Ermington,151.0653806,-33.80033289,98.0,9,2,0,35,3,2.0,1.0,2.0,House,Private room,149,0,0,moderate,55
+756,Waterloo,151.2083169,-33.89948299,93.41241287,0,3,200,150,4,2.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,flexible,200
+2009,Potts Point,151.2234644,-33.86684997,93.0,12,2,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,63,1,0,moderate,130
+7554,Surry Hills,151.2081915,-33.88836934,93.0,11,5,250,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,43,1,0,strict_14_with_grace_period,90
+7228,Drummoyne,151.1481347,-33.85708642,93.41241287,0,2,1000,150,4,2.0,3.0,3.0,House,Entire home/apt,0,0,0,flexible,221
+4381,Edmondson Park,150.8573381,-33.95509122,95.0,20,2,400,0,6,1.5,2.0,4.0,House,Entire home/apt,149,0,0,strict_14_with_grace_period,200
+2981,Chatswood,151.1775971,-33.79572649,88.0,19,3,200,80,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,115
+9191,Bondi,151.2596325,-33.89039885,93.0,9,3,1000,80,3,1.0,2.0,2.0,Apartment,Entire home/apt,363,0,0,strict_14_with_grace_period,150
+2391,Glebe,151.1792597,-33.87743378,96.0,71,4,0,200,6,2.5,3.0,3.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,350
+2613,Bondi,151.2640213,-33.89359177,91.0,28,2,250,260,6,2.0,3.0,4.0,Apartment,Entire home/apt,104,0,0,moderate,135
+6077,Redfern,151.2140893,-33.89700018,100.0,1,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,moderate,95
+8048,Whale Beach,151.3301801,-33.60759852,93.41241287,0,2,2000,350,10,3.5,4.0,9.0,House,Private room,80,0,0,strict_14_with_grace_period,1500
+6866,Randwick,151.2475536,-33.90371277,100.0,5,1,1000,0,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,moderate,74
+1003,Rushcutters Bay,151.2260976,-33.87465587,93.41241287,0,3,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,flexible,74
+123,Kirribilli,151.2118797,-33.84528055,100.0,3,3,0,0,2,1.0,1.0,2.0,Apartment,Private room,88,0,0,flexible,80
+3057,Coogee,151.255899,-33.91751976,100.0,2,5,700,200,2,1.0,1.0,1.0,Apartment,Entire home/apt,365,1,0,strict_14_with_grace_period,175
+3055,Bondi,151.2613989,-33.88953433,97.0,6,2,500,150,4,1.0,2.0,2.0,Apartment,Entire home/apt,21,0,0,strict_14_with_grace_period,210
+6554,Bronte,151.2630549,-33.9068695,93.41241287,0,3,0,0,1,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,50
+9648,Kogarah,151.1415949,-33.96297621,60.0,2,1,150,20,2,2.0,1.0,3.0,House,Private room,91,0,0,flexible,100
+3152,North Bondi,151.2836734,-33.88737039,100.0,3,6,0,0,2,1.0,1.0,1.0,House,Private room,0,0,0,moderate,45
+4616,Castlecrag,151.2188925,-33.79897425,100.0,9,2,0,0,2,3.0,1.0,1.0,Bed and breakfast,Private room,324,1,0,moderate,94
+9735,Bondi Beach,151.2702662,-33.88784427,93.41241287,0,5,0,50,2,2.0,1.0,1.0,House,Private room,83,0,0,flexible,200
+583,Pyrmont,151.1973303,-33.87097714,95.0,41,3,600,250,6,3.0,3.0,5.0,Apartment,Entire home/apt,269,0,1,strict_14_with_grace_period,674
+7672,Bondi,151.2675182,-33.89256189,87.0,3,3,129,0,2,1.5,1.0,1.0,Apartment,Private room,158,0,0,moderate,90
+4666,Sydney,151.2044577,-33.86816124,81.0,19,1,199,74,4,1.0,1.0,2.0,Apartment,Entire home/apt,335,0,0,strict_14_with_grace_period,165
+1545,Sydney Olympic Park,151.073426,-33.846734,98.0,95,1,0,69,6,2.0,2.0,2.0,Other,Entire home/apt,268,1,1,strict_14_with_grace_period,188
+9935,Dulwich Hill,151.1418173,-33.91279599,100.0,2,1,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,flexible,100
+5415,Manly,151.2838012,-33.80759577,94.0,50,7,300,0,3,1.0,2.0,2.0,Apartment,Entire home/apt,20,1,0,strict_14_with_grace_period,250
+4167,Glebe,151.1816519,-33.87969677,80.0,2,3,0,20,2,1.0,1.0,2.0,House,Private room,0,0,0,strict_14_with_grace_period,65
+6627,Randwick,151.2528134,-33.90298991,93.41241287,1,4,200,30,2,1.0,1.0,1.0,Condominium,Private room,21,0,0,strict_14_with_grace_period,55
+9187,Mosman,151.2461343,-33.81714762,93.41241287,0,7,0,100,5,2.5,3.0,3.0,Townhouse,Entire home/apt,0,0,0,strict_14_with_grace_period,349
+2521,Dee Why,151.2973667,-33.75838866,97.0,7,3,0,85,3,1.0,2.0,2.0,Guest suite,Entire home/apt,0,0,1,moderate,117
+9097,Queenscliff,151.286421,-33.78269519,93.41241287,0,14,1500,250,8,4.5,5.0,5.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,1000
+2678,Leichhardt,151.1532317,-33.8838562,100.0,1,7,1000,150,6,2.0,3.0,4.0,House,Entire home/apt,83,0,0,strict_14_with_grace_period,337
+9268,Chippendale,151.195698,-33.88803132,60.0,2,4,0,0,2,1.0,1.0,1.0,House,Private room,0,0,0,flexible,49
+4096,Avalon Beach,151.3235264,-33.62419669,93.41241287,0,14,1000,150,7,2.5,3.0,4.0,House,Entire home/apt,358,0,0,moderate,451
+1659,Cremorne,151.2235336,-33.83187517,95.0,8,2,0,75,2,1.0,1.0,1.0,Apartment,Private room,365,1,0,strict_14_with_grace_period,65
+4037,Enmore,151.1736284,-33.90032445,93.41241287,0,5,0,0,4,2.5,4.0,4.0,House,Entire home/apt,0,0,0,moderate,50
+3957,Surry Hills,151.2116388,-33.88180105,100.0,2,5,0,50,2,2.0,3.0,1.0,Apartment,Private room,23,0,0,moderate,67
+6865,Sydney,151.170015,-33.90111182,100.0,1,7,0,0,2,2.5,1.0,1.0,House,Private room,0,0,0,flexible,50
+4961,Bankstown,151.034992,-33.91815359,89.0,11,1,150,0,2,1.0,1.0,1.0,Apartment,Private room,359,0,0,moderate,85
+5427,Rockdale,151.139054,-33.95362008,93.41241287,0,2,0,60,2,1.0,1.0,1.0,Apartment,Private room,88,1,0,moderate,608
+3824,Homebush,151.076711,-33.86510804,97.0,32,2,0,20,3,1.0,1.0,1.0,Apartment,Private room,62,0,1,strict_14_with_grace_period,59
+5894,Collaroy,151.299291,-33.73775612,93.0,7,6,1000,200,8,3.0,4.0,6.0,House,Entire home/apt,365,1,0,strict_14_with_grace_period,700
+337,Glenfield,150.9002189,-33.9709932,94.0,17,1,0,15,2,1.0,1.0,1.0,House,Private room,166,0,0,moderate,46
+3320,Redfern,151.2048656,-33.89254614,93.0,3,2,150,155,4,2.0,2.0,2.0,Apartment,Entire home/apt,33,0,0,strict_14_with_grace_period,150
+9962,Rose Bay,151.2704525,-33.87908633,93.41241287,0,4,500,0,8,2.5,4.0,5.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,419
+2519,Cronulla,151.1540257,-34.04595046,93.41241287,0,3,0,0,2,1.5,1.0,1.0,Apartment,Private room,0,0,0,flexible,53
+5509,Bondi Beach,151.2741251,-33.89426275,94.0,19,2,250,60,2,1.0,0.0,2.0,Guest suite,Entire home/apt,80,0,0,strict_14_with_grace_period,349
+9433,Surry Hills,151.2128288,-33.87987374,94.0,88,1,0,30,2,1.0,0.0,1.0,Apartment,Entire home/apt,47,1,0,strict_14_with_grace_period,135
+3489,Forest Lodge,151.1768454,-33.88210063,100.0,1,3,350,50,4,1.0,2.0,2.0,Townhouse,Entire home/apt,0,0,0,strict_14_with_grace_period,133
+1442,Newtown,151.176614,-33.89758999,100.0,7,2,250,75,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,198
+2983,Cremorne,151.2299,-33.82695228,90.0,2,31,850,198,2,1.0,1.0,1.0,Apartment,Entire home/apt,349,1,0,strict_14_with_grace_period,130
+975,Newtown,151.1860054,-33.8942383,93.41241287,0,7,0,0,3,1.0,2.0,2.0,House,Entire home/apt,0,0,0,flexible,100
+6097,Bondi Beach,151.268348,-33.89070098,93.41241287,0,1,0,18,2,1.0,1.0,1.0,Condominium,Private room,0,1,0,moderate,32
+4214,Newtown,151.1766056,-33.89521157,93.41241287,0,14,0,0,1,1.0,1.0,1.0,House,Private room,0,1,0,flexible,60
+8873,Randwick,151.2370784,-33.91111742,100.0,4,3,300,80,2,1.0,1.0,1.0,Apartment,Private room,34,1,0,strict_14_with_grace_period,74
+7193,Randwick,151.2513356,-33.90823117,95.0,17,2,0,40,2,1.0,1.0,1.0,Apartment,Entire home/apt,80,0,0,moderate,125
+2910,Bondi,151.2614606,-33.89219033,87.0,3,4,0,0,6,1.0,2.0,3.0,Apartment,Entire home/apt,0,1,0,flexible,170
+3074,Bankstown,151.0283673,-33.91286581,93.41241287,0,5,0,0,1,1.0,1.0,2.01216851,Apartment,Private room,365,0,0,flexible,76
+9918,Rozelle,151.1717672,-33.86410494,90.0,31,2,0,100,6,2.0,3.0,4.0,Cottage,Entire home/apt,365,1,0,strict_14_with_grace_period,401
+3777,Bondi Beach,151.2686756,-33.89175832,100.0,6,5,500,80,4,2.0,2.0,2.0,Apartment,Entire home/apt,70,1,0,strict_14_with_grace_period,252
+8613,Rooty Hill,150.8293438,-33.78447608,100.0,2,1,0,40,2,1.0,1.0,1.0,Villa,Private room,364,0,0,moderate,50
+6912,Marrickville,151.1430679,-33.91047797,93.41241287,0,7,0,0,4,1.0,2.0,2.0,House,Entire home/apt,0,1,0,flexible,100
+9997,Newtown,151.1800787,-33.90832801,93.41241287,0,9,200,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,42,1,0,moderate,86
+6340,Camperdown,151.1820036,-33.8863817,93.41241287,0,8,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,flexible,250
+7049,Gordon,151.1426756,-33.75421834,93.41241287,0,1,0,30,2,2.5,1.0,1.0,House,Private room,53,1,0,moderate,59
+1223,Bondi,151.2710933,-33.89637305,85.0,4,1,0,40,3,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,flexible,130
+5703,Randwick,151.240251,-33.90656107,93.41241287,0,4,0,0,5,2.0,3.0,3.0,Apartment,Entire home/apt,0,0,0,flexible,401
+4809,Camperdown,151.1800758,-33.88479009,93.41241287,0,3,0,0,5,2.0,3.0,3.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,200
+8475,Bellevue Hill,151.2598182,-33.88721811,93.41241287,0,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,flexible,45
+7375,Collaroy,151.298219,-33.73212589,93.41241287,0,3,0,200,4,2.0,2.0,3.0,Apartment,Entire home/apt,134,0,0,strict_14_with_grace_period,150
+9090,Balgowlah Heights,151.2694474,-33.80425714,100.0,26,5,500,0,2,1.0,1.0,1.0,Loft,Entire home/apt,259,0,1,strict_14_with_grace_period,205
+8458,Queenscliff,151.2835314,-33.78085372,100.0,3,3,250,150,6,3.5,4.0,4.0,House,Entire home/apt,178,0,0,flexible,650
+7879,Sydney Olympic Park,151.0735922,-33.84812685,87.0,30,1,400,100,6,2.0,2.0,3.0,Apartment,Entire home/apt,76,0,0,strict_14_with_grace_period,198
+6083,Putney,151.1094394,-33.82371996,95.0,41,1,300,30,3,1.0,1.0,1.0,Guesthouse,Entire home/apt,1,0,1,strict_14_with_grace_period,50
+1126,Ryde,151.1050155,-33.81155621,93.41241287,0,5,0,0,2,1.0,1.0,1.0,Apartment,Shared room,0,1,0,flexible,45
+9312,Bondi Beach,151.2681665,-33.89055372,93.41241287,0,2,500,50,2,2.0,1.0,1.0,Apartment,Private room,343,1,0,moderate,100
+2434,Stanmore,151.1668837,-33.8893715,96.0,25,1,500,30,4,1.5,1.0,2.0,House,Private room,344,0,1,moderate,80
+4877,Pyrmont,151.1977073,-33.87435315,89.0,29,1,300,70,6,2.0,2.0,4.0,Apartment,Entire home/apt,292,0,0,strict_14_with_grace_period,214
+4842,Wolli Creek,151.149297,-33.92884453,98.0,15,2,0,20,2,1.0,1.0,1.0,Condominium,Private room,65,0,0,flexible,55
+9218,Seaforth,151.2384874,-33.78153837,100.0,5,5,0,100,5,1.5,2.0,4.0,House,Entire home/apt,62,1,0,strict_14_with_grace_period,200
+6040,Darlinghurst,151.2221954,-33.87720808,98.0,8,2,500,70,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,225
+7512,Balmain,151.1734017,-33.85639361,100.0,1,5,1000,150,5,2.0,3.0,3.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,200
+117,Randwick,151.2387334,-33.91534731,93.41241287,2,1,0,0,2,2.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,91
+813,Rozelle,151.1722684,-33.86769824,93.41241287,0,7,0,0,5,2.5,3.0,4.0,House,Entire home/apt,0,0,0,flexible,401
+4493,Fairlight,151.2794553,-33.79312132,98.0,23,2,0,20,2,1.0,0.0,1.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,139
+6864,Darlinghurst,151.2189004,-33.88094675,85.0,40,1,300,50,6,1.0,2.0,3.0,Apartment,Entire home/apt,334,1,0,strict_14_with_grace_period,200
+4124,Bondi,151.2706503,-33.89584366,90.0,4,3,0,0,1,1.0,1.0,1.0,Apartment,Private room,0,1,0,flexible,60
+9562,Manly,151.2834396,-33.78845074,93.41241287,1,1,0,15,2,1.0,1.0,1.0,House,Entire home/apt,0,1,0,flexible,98
+8810,North Curl Curl,151.2985464,-33.76407126,96.0,28,2,0,30,2,1.0,1.0,1.0,Guest suite,Entire home/apt,72,0,1,moderate,100
+9375,Coogee,151.2494594,-33.92232713,100.0,27,1,250,15,2,1.0,1.0,1.0,Apartment,Private room,25,1,1,flexible,58
+3564,Chippendale,151.1973103,-33.88739923,86.0,132,1,200,95,4,1.0,1.0,2.0,Apartment,Entire home/apt,131,1,0,strict_14_with_grace_period,146
+5258,Stanmore,151.1682746,-33.88963559,95.0,12,1,500,30,1,1.5,1.0,1.0,House,Private room,224,0,1,moderate,50
+1878,Surry Hills,151.2133119,-33.87940477,78.0,10,6,500,210,2,1.0,1.0,1.0,Apartment,Entire home/apt,166,0,0,strict_14_with_grace_period,171
+802,North Bondi,151.2822939,-33.88567626,98.0,22,3,500,0,4,2.5,2.0,3.0,House,Entire home/apt,316,1,0,strict_14_with_grace_period,349
+8258,Zetland,151.2132013,-33.90393932,100.0,2,3,0,50,5,1.0,2.0,3.0,Apartment,Entire home/apt,0,1,0,flexible,150
+1904,Randwick,151.241426,-33.91373228,96.0,5,5,0,70,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,moderate,130
+3811,Clovelly,151.2639065,-33.91164246,100.0,5,5,2000,250,4,1.0,2.0,2.0,Apartment,Entire home/apt,36,1,0,strict_14_with_grace_period,360
+2171,Parramatta,150.9989659,-33.81520548,60.0,1,1,0,0,2,1.0,1.0,2.0,Apartment,Private room,89,0,0,flexible,59
+3871,Croydon,151.1131288,-33.88012379,96.0,29,1,300,100,6,2.0,3.0,5.0,Apartment,Entire home/apt,39,0,1,moderate,179
+4106,Double Bay,151.2461152,-33.87605948,93.41241287,0,5,500,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,80
+6189,Cammeray,151.2193987,-33.82057471,100.0,4,5,1100,150,6,2.0,3.0,4.0,Apartment,Entire home/apt,22,0,0,strict_14_with_grace_period,206
+3978,Pyrmont,151.197304,-33.87343961,95.0,40,2,350,90,3,1.0,1.0,2.0,Apartment,Entire home/apt,16,1,0,moderate,189
+3032,Cremorne,151.2274294,-33.82801153,93.41241287,0,1,0,0,4,1.0,2.0,2.0,Apartment,Entire home/apt,88,0,0,flexible,180
+3203,Darlinghurst,151.2127887,-33.87694493,90.0,21,2,500,0,8,1.0,3.0,6.0,Apartment,Entire home/apt,270,1,0,strict_14_with_grace_period,370
+3806,Queenscliff,151.2832949,-33.78287778,96.0,43,2,300,60,2,1.0,1.0,1.0,Apartment,Entire home/apt,342,0,0,strict_14_with_grace_period,179
+5750,Saint Leonards,151.1941324,-33.82171749,93.41241287,1,5,200,25,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,flexible,115
+669,North Bondi,151.2794705,-33.88709076,100.0,2,10,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,80
+2824,Potts Point,151.2218263,-33.87145912,93.0,40,2,250,100,4,1.0,2.0,2.0,Townhouse,Entire home/apt,113,1,0,strict_14_with_grace_period,200
+5792,Bellevue Hill,151.2582918,-33.88115305,93.41241287,0,4,5000,500,8,3.5,4.0,4.0,Villa,Entire home/apt,365,1,0,strict_14_with_grace_period,3000
+5593,Bondi Beach,151.2726218,-33.88791485,100.0,2,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,78
+9519,Wolli Creek,151.1502894,-33.93025176,95.0,4,2,0,0,1,1.0,1.0,1.0,Guest suite,Private room,0,1,1,flexible,30
+7840,Sydney,151.2025902,-33.87440713,99.0,14,3,0,50,4,1.0,1.0,3.0,Apartment,Entire home/apt,145,0,0,moderate,156
+1832,Asquith,151.1064435,-33.68868736,100.0,5,6,400,150,5,2.0,2.0,3.0,Apartment,Entire home/apt,14,0,0,moderate,100
+5832,Surry Hills,151.2142737,-33.88152279,98.0,11,5,0,0,4,1.5,2.0,2.0,Townhouse,Entire home/apt,203,1,0,moderate,275
+2648,Artarmon,151.1874964,-33.81193863,93.41241287,0,14,0,0,4,2.0,2.0,2.0,Apartment,Entire home/apt,90,0,0,flexible,290
+5354,North Bondi,151.284041,-33.89353051,100.0,5,3,0,80,4,1.0,2.0,2.0,Apartment,Entire home/apt,16,1,0,flexible,185
+4039,Darlington,151.1957889,-33.89103379,92.0,84,3,135,0,4,1.0,1.0,2.0,Townhouse,Entire home/apt,253,1,0,strict_14_with_grace_period,135
+3238,Carlton,151.1174413,-33.97009462,100.0,23,4,200,45,2,1.0,1.0,1.0,House,Private room,179,1,0,strict_14_with_grace_period,65
+4904,Woollahra,151.243396,-33.88700176,93.41241287,0,4,500,0,4,2.5,3.0,2.0,House,Entire home/apt,0,1,0,moderate,451
+8512,Waverley,151.2554995,-33.90061812,93.41241287,0,3,0,0,8,3.5,5.0,6.0,House,Entire home/apt,67,0,0,flexible,1201
+4330,Mosman,151.2402388,-33.82396327,93.41241287,0,2,1000,60,7,2.0,2.0,3.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,595
+9996,North Bondi,151.2833824,-33.89092282,100.0,1,2,0,50,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,flexible,199
+4187,Darlinghurst,151.2215928,-33.87829838,93.0,26,1,150,20,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,moderate,84
+8217,Potts Point,151.2243072,-33.87382212,95.0,35,1,300,65,4,1.0,1.0,2.0,Apartment,Entire home/apt,142,0,1,strict_14_with_grace_period,130
+7652,Bilgola Beach,151.3147528,-33.6420374,100.0,4,4,0,150,9,3.0,5.0,6.0,House,Entire home/apt,32,0,0,moderate,451
+1210,Darlinghurst,151.2181322,-33.88118567,97.0,112,5,0,20,2,1.0,1.0,1.0,Townhouse,Private room,62,1,1,strict_14_with_grace_period,71
+6496,Coogee,151.2489825,-33.9187327,95.0,14,2,300,60,4,1.0,2.0,2.0,Apartment,Entire home/apt,180,0,0,moderate,200
+422,North Willoughby,151.1993565,-33.80073024,98.0,8,2,0,25,2,1.0,1.0,1.0,Guesthouse,Entire home/apt,351,0,1,moderate,150
+9605,Sydney,151.2755278,-33.8873083,80.0,3,2,0,100,4,1.0,2.0,3.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,195
+9400,Erskineville,151.1864759,-33.90450005,100.0,1,14,200,180,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,200
+2989,Potts Point,151.2246186,-33.87319955,97.0,6,2,0,25,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,flexible,111
+7309,Hunters Hill,151.1372308,-33.82837363,98.0,8,2,0,60,6,2.0,3.0,6.0,Townhouse,Entire home/apt,0,0,0,moderate,250
+4452,Kensington,151.2223331,-33.90463071,93.0,12,3,0,0,2,1.0,1.0,1.0,Apartment,Private room,17,0,0,strict_14_with_grace_period,80
+4000,Darlinghurst,151.2168727,-33.87515352,91.0,9,4,130,50,5,1.0,1.0,3.0,Loft,Entire home/apt,5,0,0,strict_14_with_grace_period,159
+9224,Bondi,151.2654074,-33.89551875,100.0,3,5,200,70,2,1.0,1.0,1.0,Apartment,Entire home/apt,97,1,0,flexible,179
+5069,Bondi Beach,151.2718689,-33.89323601,100.0,1,1,500,50,2,1.0,1.0,1.0,Apartment,Private room,247,1,0,strict_14_with_grace_period,111
+2473,Mosman,151.243923,-33.81458959,93.0,7,3,200,90,2,1.0,1.0,1.0,Apartment,Entire home/apt,363,0,0,moderate,130
+3843,Lane Cove North,151.1784729,-33.80730567,83.0,8,3,500,40,1,1.0,1.0,1.0,Apartment,Private room,0,0,0,moderate,45
+499,Glenorie,151.014411,-33.57199409,20.0,1,1,0,0,2,2.0,2.0,2.0,Nature lodge,Private room,178,0,0,flexible,59
+5160,Kingswood,150.7329745,-33.75984276,97.0,22,4,0,50,2,1.0,1.0,1.0,House,Private room,90,1,0,strict_14_with_grace_period,49
+8775,Erskineville,151.185159,-33.90328859,100.0,4,1,0,0,1,1.0,0.0,1.0,Townhouse,Private room,0,1,0,flexible,41
+5957,Camperdown,151.1802836,-33.88577401,93.41241287,1,3,0,0,3,1.0,2.0,3.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,150
+2941,Avalon Beach,151.3312546,-33.634401,100.0,6,2,799,120,2,1.0,1.0,1.0,Apartment,Entire home/apt,362,1,0,strict_14_with_grace_period,210
+5499,Annandale,151.1692775,-33.88298472,98.0,13,2,0,30,2,1.0,1.0,1.0,Apartment,Private room,17,1,0,moderate,59
+4772,Paddington,151.2268366,-33.88680517,93.0,3,3,200,0,2,1.0,1.0,1.0,House,Private room,12,1,0,moderate,65
+5525,Bondi,151.271788,-33.89560629,95.0,8,1,134,25,4,1.0,2.0,2.0,Apartment,Entire home/apt,179,1,0,strict_14_with_grace_period,299
+9054,Darlinghurst,151.2129312,-33.87622716,93.0,3,2,500,0,5,1.0,0.0,3.0,Apartment,Entire home/apt,365,1,0,strict_14_with_grace_period,214
+2460,Coogee,151.2579643,-33.91274382,93.41241287,0,3,0,0,2,1.0,1.0,1.0,Townhouse,Private room,0,0,0,flexible,65
+544,Newtown,151.1796196,-33.90375717,93.41241287,0,4,0,0,2,1.0,1.0,1.0,House,Entire home/apt,0,1,0,flexible,95
+1058,North Sydney,151.204918,-33.83575526,60.0,1,3,0,180,4,2.0,2.0,2.0,Apartment,Entire home/apt,5,0,0,moderate,190
+4292,Panania,151.0034814,-33.94788203,100.0,3,1,400,50,1,1.0,1.0,1.0,House,Private room,85,0,0,flexible,40
+9722,Bondi Junction,151.2592297,-33.89094665,93.41241287,0,7,0,350,5,2.0,3.0,4.0,Apartment,Entire home/apt,357,1,0,strict_14_with_grace_period,225
+8640,Pyrmont,151.1930724,-33.86971007,100.0,8,2,0,180,6,2.0,2.0,2.0,Apartment,Entire home/apt,15,0,1,strict_14_with_grace_period,264
+6177,Newtown,151.176705,-33.90349012,98.0,10,2,130,120,5,1.0,2.0,2.0,Apartment,Entire home/apt,122,0,0,strict_14_with_grace_period,159
+9725,Annandale,151.1689445,-33.88046018,93.41241287,0,1,0,0,1,1.0,1.0,1.0,House,Private room,0,0,0,flexible,280
+7555,Redfern,151.2070981,-33.8903089,80.0,2,2,375,309,7,2.0,4.0,5.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,230
+2499,Darlinghurst,151.2250004,-33.87800199,100.0,3,5,500,0,2,1.0,1.0,1.0,Apartment,Private room,83,0,1,strict_14_with_grace_period,55
+9867,Bondi,151.2598126,-33.8927696,93.41241287,0,4,1000,60,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,flexible,250
+8474,Kurnell,151.2152315,-34.0074624,93.41241287,0,2,0,0,4,2.0,2.0,2.0,Apartment,Entire home/apt,0,0,0,moderate,380
+6528,Glebe,151.1824551,-33.87445157,100.0,1,2,0,0,2,2.0,3.0,3.0,House,Private room,0,1,0,moderate,199
+1262,Wollstonecraft,151.1961661,-33.83156273,97.0,6,10,150,50,1,1.0,1.0,1.0,Apartment,Private room,342,0,0,moderate,50
+1142,North Bondi,151.2821298,-33.89008147,98.0,18,2,1000,0,3,1.0,2.0,2.0,Apartment,Entire home/apt,4,1,0,moderate,240
+5298,Manly,151.2851307,-33.78955575,82.0,10,3,0,0,2,1.0,1.0,2.0,Guesthouse,Private room,355,0,0,moderate,89
+3077,Phillip Bay,151.2350992,-33.98020932,93.41241287,2,7,800,0,6,2.0,3.0,4.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,114
+2239,Chatswood,151.1771673,-33.798497,95.0,4,2,0,0,2,1.0,1.0,1.0,Boutique hotel,Private room,179,0,0,flexible,120
+8880,Manly,151.2792395,-33.79599369,98.0,28,2,0,0,2,1.0,1.0,1.0,Apartment,Private room,2,0,1,strict_14_with_grace_period,90
+1168,Woollahra,151.2449427,-33.88666876,93.41241287,0,7,2000,375,7,4.0,4.0,4.0,House,Entire home/apt,118,1,0,strict_14_with_grace_period,1870
+4756,The Rocks,151.2073257,-33.86277507,93.41241287,0,1,0,0,2,1.0,1.0,2.0,Boutique hotel,Private room,0,1,0,strict_14_with_grace_period,180
+9535,Dee Why,151.2801806,-33.75466224,93.41241287,1,2,0,0,2,1.0,1.0,1.0,Other,Private room,0,1,0,flexible,100
+9853,Saint Peters,151.1710526,-33.91388724,100.0,2,4,0,0,1,1.0,1.0,1.0,House,Private room,0,0,0,flexible,38
+2863,Bondi Beach,151.2735052,-33.88669506,100.0,1,3,149,49,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,moderate,183
+6304,Cremorne Point,151.2266523,-33.83904338,90.0,3,2,0,0,2,1.0,1.0,1.0,Apartment,Private room,120,0,0,strict_14_with_grace_period,80
+5556,Scotland Island,151.2957739,-33.63839912,98.0,10,2,0,200,12,2.0,4.0,9.0,House,Entire home/apt,364,1,0,flexible,401
+9198,Mascot,151.1897074,-33.9230524,93.41241287,0,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,83
+1509,Darlington,151.1916531,-33.89338822,100.0,1,2,0,40,4,1.0,2.0,2.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,281
+8631,North Bondi,151.2760278,-33.88253163,100.0,1,7,2500,595,8,3.0,4.0,6.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,595
+16,North Bondi,151.2804057,-33.88881462,90.0,8,2,0,100,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,179
+7226,Waterloo,151.2135603,-33.90103612,93.41241287,1,1,0,30,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,moderate,100
+7586,Potts Point,151.2245355,-33.87147423,93.41241287,0,2,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,moderate,95
+7367,Bondi Beach,151.272135,-33.89075081,53.0,3,1,0,0,8,2.0,1.0,8.0,Hostel,Shared room,69,1,0,strict_14_with_grace_period,35
+4729,Erskineville,151.1849503,-33.90401637,99.0,40,3,250,50,1,1.0,1.0,1.0,Apartment,Private room,34,1,1,flexible,63
+7920,Sydney,151.2036151,-33.87568924,89.0,81,1,500,50,2,1.0,0.0,1.0,Apartment,Entire home/apt,121,1,0,strict_14_with_grace_period,111
+8518,Woolloomooloo,151.2219651,-33.87479015,100.0,5,4,0,0,2,1.0,1.0,1.0,House,Private room,0,1,0,flexible,70
+5948,Maroubra,151.2614175,-33.94236338,100.0,8,4,300,0,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,moderate,200
+2413,Bondi,151.2705972,-33.89490698,100.0,1,2,0,100,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,moderate,150
+6310,Bondi,151.268803,-33.89373041,93.41241287,0,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,flexible,50
+7199,Gymea,151.0861538,-34.03965653,93.41241287,0,14,1000,60,6,1.5,3.0,5.0,House,Entire home/apt,364,1,0,strict_14_with_grace_period,281
+2951,Bondi Beach,151.2719631,-33.8918597,93.41241287,0,7,0,40,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,moderate,174
+3172,Balmain,151.1794493,-33.85967314,100.0,1,3,5000,300,8,3.0,5.0,5.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,549
+8793,Manly,151.2857525,-33.80606214,93.41241287,0,5,500,150,6,2.0,3.0,3.0,Bed and breakfast,Entire home/apt,0,0,0,strict_14_with_grace_period,401
+3887,Sydney,151.2120401,-33.87805432,98.0,57,2,300,50,2,1.0,1.0,1.0,Condominium,Entire home/apt,35,1,1,strict_14_with_grace_period,210
+2869,Kirribilli,151.216203,-33.8502155,95.0,11,2,0,0,2,1.0,1.0,1.0,Apartment,Private room,63,0,0,flexible,66
+5207,Bondi Junction,151.2482076,-33.89085927,93.41241287,1,21,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,100
+6940,Bondi Beach,151.2714813,-33.88951074,93.41241287,0,4,0,0,1,1.0,1.0,1.0,Apartment,Private room,0,1,0,flexible,70
+8023,Erskineville,151.186752,-33.90413231,99.0,69,2,250,50,2,1.0,1.0,1.0,Apartment,Entire home/apt,161,1,1,strict_14_with_grace_period,210
+7541,Surry Hills,151.2136427,-33.88635413,100.0,4,1,0,0,4,1.0,1.0,4.0,Apartment,Entire home/apt,7,1,0,flexible,150
+8932,Eastwood,151.0767459,-33.78639154,93.41241287,0,2,0,0,2,2.0,1.0,1.0,House,Private room,0,0,0,flexible,35
+4736,Avalon Beach,151.3217364,-33.6245473,100.0,16,5,0,35,3,1.0,2.0,2.0,Apartment,Entire home/apt,177,0,0,strict_14_with_grace_period,200
+1341,Avalon Beach,151.3354402,-33.61841233,93.41241287,2,5,1000,100,8,2.0,5.0,6.0,House,Entire home/apt,63,1,0,strict_14_with_grace_period,500
+842,Randwick,151.2517997,-33.90485911,93.41241287,0,7,0,0,4,1.0,2.0,2.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,300
+9597,North Narrabeen,151.2917706,-33.70738369,100.0,2,3,0,250,7,2.5,4.0,4.0,House,Entire home/apt,197,1,0,flexible,320
+1874,Surry Hills,151.2118763,-33.88653899,95.0,8,4,0,60,4,1.0,2.0,2.0,Apartment,Entire home/apt,17,1,0,flexible,150
+5344,Randwick,151.2475939,-33.91309,93.41241287,0,7,300,50,6,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,flexible,235
+954,Summer Hill,151.133849,-33.89305237,85.0,4,1,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,flexible,100
+1935,Bondi,151.2711147,-33.89521714,90.0,5,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,flexible,100
+5901,Bondi Junction,151.2479364,-33.89429773,93.41241287,0,10,0,0,7,1.0,3.0,3.0,House,Entire home/apt,90,0,0,flexible,500
+3979,Riverwood,151.0504351,-33.94817378,94.0,30,2,0,85,8,2.0,4.0,6.0,Guest suite,Entire home/apt,140,0,0,moderate,120
+9784,Maroubra,151.2481693,-33.94957469,93.41241287,0,3,0,0,2,3.0,1.0,1.0,House,Shared room,0,0,0,flexible,85
+5961,Paddington,151.2214833,-33.88028966,95.0,4,2,0,0,6,2.0,3.0,3.0,House,Entire home/apt,0,1,1,strict_14_with_grace_period,300
+1274,Woollahra,151.2414653,-33.88852117,93.0,3,2,130,20,1,1.0,1.0,1.0,House,Private room,0,0,0,moderate,65
+379,Petersham,151.1524711,-33.89680873,100.0,3,4,0,25,4,1.0,2.0,2.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,130
+6502,Hurstville Grove,151.0926211,-33.97391158,97.0,7,1,0,0,2,1.5,1.0,2.0,House,Private room,180,0,0,strict_14_with_grace_period,76
+9990,Hurstville,151.1015227,-33.96854361,93.41241287,0,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,70
+8272,Seaforth,151.2397805,-33.79811542,100.0,1,7,2000,200,8,2.5,4.0,5.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,549
+9100,Dee Why,151.2921192,-33.75335468,80.0,2,14,0,0,2,1.0,1.0,1.0,Apartment,Private room,76,0,0,flexible,45
+5698,Meadowbank,151.0906311,-33.81690543,93.41241287,0,1,200,15,1,1.0,1.0,1.0,Apartment,Private room,84,0,0,moderate,94
+7275,Clovelly,151.2632512,-33.911057,93.41241287,0,7,5000,387,8,3.5,4.0,4.0,House,Entire home/apt,347,1,0,strict_14_with_grace_period,2069
+4297,Surry Hills,151.2154851,-33.88381311,95.0,22,2,1000,125,4,1.0,2.0,2.0,Guest suite,Entire home/apt,323,0,0,strict_14_with_grace_period,299
+3164,Bondi Junction,151.2526553,-33.89187048,93.0,3,28,250,109,2,1.0,1.0,1.0,Apartment,Entire home/apt,94,0,0,strict_14_with_grace_period,200
+9387,Redfern,151.2116142,-33.89669838,80.0,1,3,0,50,4,1.0,2.0,2.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,350
+5647,Chippendale,151.1984668,-33.88782781,93.0,45,1,0,10,3,1.0,1.0,1.0,House,Private room,334,1,0,flexible,105
+3101,Macquarie Park,151.117508,-33.77958768,98.0,33,1,0,30,2,1.0,1.0,1.0,Apartment,Private room,208,1,1,strict_14_with_grace_period,100
+2684,Cronulla,151.1525746,-34.05226178,87.0,6,1,0,40,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,flexible,198
+6769,Potts Point,151.2252695,-33.86721846,93.41241287,0,24,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,flexible,97
+8382,Allambie Heights,151.2602867,-33.77541441,96.0,92,2,0,0,4,1.0,1.0,2.0,Guest suite,Entire home/apt,127,1,1,moderate,76
+1022,Macquarie Park,151.1124855,-33.77929536,100.0,1,1,250,60,4,1.0,1.0,2.0,Apartment,Entire home/apt,108,0,0,strict_14_with_grace_period,150
+5605,Paddington,151.2208604,-33.88023127,82.0,13,2,500,85,2,1.0,1.0,1.0,Apartment,Entire home/apt,30,1,0,moderate,111
+2841,Seaforth,151.2512893,-33.79431176,100.0,3,5,0,150,8,2.0,5.0,5.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,495
+9011,Randwick,151.2402528,-33.90893184,60.0,1,7,0,0,2,1.0,1.0,3.0,Apartment,Private room,0,0,0,moderate,50
+7343,Coogee,151.2598203,-33.92841475,99.0,18,3,0,202,6,2.0,3.0,4.0,Apartment,Entire home/apt,332,1,0,strict_14_with_grace_period,438
+7860,Rozelle,151.170357,-33.86303232,93.41241287,0,3,0,195,2,1.0,0.0,1.0,Apartment,Entire home/apt,90,0,0,strict_14_with_grace_period,175
+6695,Pyrmont,151.1964466,-33.87468533,90.0,4,3,1000,125,4,1.0,1.0,1.0,Apartment,Entire home/apt,102,1,0,strict_14_with_grace_period,179
+5644,Strathfield,151.0776901,-33.87630966,97.0,7,21,0,7,1,1.0,1.0,1.0,House,Private room,365,0,1,moderate,35
+6175,Randwick,151.2452737,-33.91865559,97.0,17,2,0,0,1,1.0,1.0,1.0,Apartment,Private room,69,1,0,flexible,90
+4701,Waterloo,151.2106051,-33.90002552,93.0,4,1,0,0,5,2.5,2.0,2.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,100
+3757,Seaforth,151.2427647,-33.80311181,93.41241287,0,7,2000,500,14,5.5,7.0,7.0,Villa,Entire home/apt,198,1,0,strict_14_with_grace_period,2575
+9792,Waterloo,151.2101931,-33.89555121,100.0,10,1,200,50,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,flexible,130
+9737,Beverly Hills,151.0770328,-33.94717639,99.0,21,1,350,85,6,1.0,2.0,3.0,Guesthouse,Entire home/apt,33,0,1,moderate,179
+7846,Dee Why,151.2918683,-33.74921877,100.0,1,3,0,0,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,80
+2675,Marrickville,151.1677315,-33.90313593,93.41241287,0,1,120,10,1,1.0,1.0,1.0,House,Private room,365,0,0,flexible,120
+2154,Vaucluse,151.2792998,-33.86545541,93.41241287,0,14,1200,50,2,2.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,91
+5963,Chippendale,151.1977683,-33.88573352,99.0,21,2,250,35,4,1.0,1.0,6.0,Loft,Entire home/apt,225,0,1,moderate,148
+3533,Little Bay,151.2443328,-33.97719558,100.0,3,2,1000,200,8,3.0,4.0,4.0,Townhouse,Entire home/apt,10,0,0,moderate,451
+4129,Crows Nest,151.2000066,-33.82357623,95.0,38,5,500,154,4,2.5,2.0,2.0,Apartment,Entire home/apt,64,1,0,strict_14_with_grace_period,150
+1402,Paddington,151.2254976,-33.8830486,87.0,83,1,500,240,7,2.0,4.0,5.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,484
+2966,Cremorne,151.2260954,-33.82865585,93.41241287,0,5,500,201,2,1.0,1.0,1.0,Apartment,Entire home/apt,1,0,0,strict_14_with_grace_period,172
+2749,Rushcutters Bay,151.2264793,-33.87479023,91.0,21,14,0,120,2,1.0,0.0,1.0,Apartment,Entire home/apt,351,0,0,strict_14_with_grace_period,165
+4498,Northbridge,151.2153344,-33.80829242,93.41241287,0,10,0,0,7,3.5,4.0,5.0,House,Entire home/apt,23,0,0,strict_14_with_grace_period,650
+4627,Dee Why,151.282288,-33.75195063,93.41241287,0,1,300,50,1,1.0,1.0,1.0,Apartment,Private room,296,0,0,strict_14_with_grace_period,45
+6494,Sydney,151.188321,-33.92341919,50.0,3,3,200,0,1,2.0,1.0,2.0,Apartment,Shared room,363,1,0,flexible,43
+3392,North Bondi,151.2825284,-33.8881955,93.41241287,0,2,0,30,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,moderate,80
+9333,Bondi Beach,151.2739734,-33.8909369,95.0,38,2,500,120,3,1.0,1.0,2.0,Apartment,Entire home/apt,354,1,0,strict_14_with_grace_period,163
+9133,Rose Bay,151.2742318,-33.87831297,93.41241287,0,1,300,80,4,1.0,2.0,2.0,Apartment,Entire home/apt,87,1,0,flexible,0
+1286,Manly,151.2879751,-33.79795671,99.0,23,3,350,165,4,1.0,1.0,2.0,Apartment,Entire home/apt,157,0,0,strict_14_with_grace_period,349
+3481,Bondi,151.2624075,-33.89717377,93.41241287,0,7,500,150,4,1.5,2.0,2.0,House,Entire home/apt,0,1,0,flexible,350
+2680,Sydney,151.212774,-33.84784617,93.41241287,0,5,200,150,3,2.0,2.0,2.0,Apartment,Entire home/apt,191,1,1,flexible,250
+3557,Manly,151.2874794,-33.80000827,87.0,4,5,1500,341,6,1.0,3.0,4.0,House,Entire home/apt,76,1,0,strict_14_with_grace_period,342
+1964,Wisemans Ferry,150.9780791,-33.40015658,100.0,7,3,0,120,5,1.5,2.0,3.0,Villa,Entire home/apt,147,0,0,moderate,299
+6536,Manly,151.2865138,-33.79702987,93.41241287,0,14,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,71
+7173,Balmain,151.1815355,-33.85533119,100.0,1,7,0,50,4,1.0,2.0,2.0,Townhouse,Entire home/apt,150,0,0,strict_14_with_grace_period,1500
+7539,Bondi Beach,151.2704484,-33.89338513,100.0,1,7,200,65,4,1.0,2.0,1.0,Apartment,Entire home/apt,21,1,0,moderate,170
+7911,Summer Hill,151.1330941,-33.89074596,100.0,2,2,0,0,3,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,moderate,76
+4258,Maroubra,151.2389686,-33.94105966,93.41241287,0,2,0,10,2,1.0,1.0,2.0,House,Shared room,0,1,0,flexible,100
+330,Bondi,151.2603215,-33.89321131,93.41241287,1,3,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,110
+4719,North Bondi ,151.2721746,-33.88331783,93.41241287,2,5,0,60,4,1.0,2.0,3.0,Apartment,Entire home/apt,0,0,0,moderate,139
+5158,Kirribilli,151.2164557,-33.84983082,87.0,9,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,strict_14_with_grace_period,85
+1430,Canterbury,151.1187281,-33.91269332,90.0,4,1,400,40,3,1.0,1.0,2.0,Apartment,Private room,302,0,0,strict_14_with_grace_period,67
+9495,Pyrmont,151.1987813,-33.86976767,97.0,37,3,0,50,2,1.0,1.0,1.0,Apartment,Private room,60,1,1,moderate,98
+4603,Paddington,151.2229278,-33.8831252,97.0,21,1,0,125,6,1.5,3.0,3.0,House,Entire home/apt,231,0,1,strict_14_with_grace_period,375
+3373,Paddington,151.2307947,-33.88788548,93.41241287,0,5,200,0,1,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,150
+8428,Mount Druitt,150.8182166,-33.76386383,96.0,9,2,0,0,1,1.0,1.0,1.0,Apartment,Private room,0,0,0,moderate,30
+7955,Maroubra,151.2362375,-33.94443213,100.0,5,2,1000,200,8,2.0,4.0,5.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,501
+4588,Maroubra,151.2562004,-33.94710819,100.0,5,3,0,150,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,215
+3875,Bronte,151.2604897,-33.90422184,93.41241287,0,3,300,0,2,1.0,1.0,1.0,Apartment,Private room,365,1,0,flexible,150
+8989,Ultimo,151.1996734,-33.88413452,93.41241287,0,15,500,100,2,1.0,0.0,1.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,97
+2184,Glenhaven,151.0106844,-33.71057995,93.0,92,1,0,35,8,1.0,3.0,5.0,Cottage,Entire home/apt,250,1,0,moderate,123
+798,Bronte,151.2660936,-33.90026404,90.0,2,4,900,120,4,1.0,2.0,3.0,House,Entire home/apt,179,1,0,strict_14_with_grace_period,250
+1005,Dover Heights,151.2818341,-33.87112462,100.0,3,10,0,100,10,1.5,4.0,6.0,House,Entire home/apt,129,0,0,strict_14_with_grace_period,395
+1952,Dangar Island,151.2417372,-33.53794986,90.0,25,1,0,25,4,1.0,3.0,2.0,Bed and breakfast,Private room,361,0,0,flexible,130
+3733,North Bondi,151.281495,-33.89037931,93.0,26,1,0,75,3,1.0,1.0,1.0,Apartment,Entire home/apt,365,1,0,strict_14_with_grace_period,225
+4516,Stanmore,151.1618537,-33.8888347,99.0,17,20,132,75,4,1.0,2.0,2.0,House,Entire home/apt,0,1,1,moderate,227
+6706,Great Mackerel Beach,151.2968276,-33.58963709,100.0,2,2,140,15,2,1.0,2.0,1.0,Bed and breakfast,Private room,87,1,1,strict_14_with_grace_period,111
+7016,Newtown,151.1777164,-33.89594152,100.0,2,2,0,0,2,1.0,1.0,1.0,House,Private room,0,0,0,flexible,51
+5297,Bondi Beach,151.2707465,-33.88812365,100.0,10,2,0,50,4,1.0,2.0,2.0,Apartment,Entire home/apt,0,0,1,strict_14_with_grace_period,78
+7705,Northmead,150.9955181,-33.79273603,93.41241287,0,7,677,20,2,1.0,1.0,2.0,Apartment,Private room,0,1,0,moderate,135
+657,North Bondi,151.2763677,-33.88111816,80.0,1,6,750,250,5,2.0,4.0,4.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,304
+828,North Bondi,151.2835663,-33.88959735,98.0,37,1,0,19,2,1.0,1.0,1.0,Apartment,Private room,142,1,0,moderate,100
+4488,Redfern,151.2057216,-33.89114521,83.0,62,9,0,60,2,2.0,1.0,1.0,House,Private room,124,1,0,strict_14_with_grace_period,69
+4980,Bondi,151.2664057,-33.89324282,100.0,2,1,0,50,2,1.0,1.0,1.0,Apartment,Private room,187,1,0,flexible,80
+3327,Darlinghurst,151.2193216,-33.87560157,93.41241287,0,5,0,30,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,moderate,85
+5552,Marsfield,151.103855,-33.78035676,80.0,1,1,0,25,2,1.0,1.0,1.0,Townhouse,Private room,0,0,0,flexible,72
+5093,Maroubra,151.2387946,-33.93448312,93.41241287,0,7,1000,480,6,2.0,3.0,3.0,House,Entire home/apt,365,1,0,strict_14_with_grace_period,689
+8502,Avalon Beach,151.326702,-33.62850573,100.0,4,7,500,100,6,2.0,4.0,4.0,House,Entire home/apt,91,0,0,moderate,500
+9253,Sydney,151.2034819,-33.86811905,97.0,36,1,500,100,6,2.0,2.0,6.0,Apartment,Entire home/apt,159,0,1,strict_14_with_grace_period,308
+7296,Coogee,151.2563326,-33.92176387,100.0,2,3,0,10,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,50
+114,Mona Vale,151.2953937,-33.67726737,90.0,2,7,1000,100,6,2.0,3.0,4.0,House,Entire home/apt,0,0,0,moderate,300
+2668,Dee Why,151.2977763,-33.76004122,97.0,8,2,0,100,8,2.5,3.0,5.0,House,Entire home/apt,176,0,0,flexible,295
+626,Bondi Beach,151.2731276,-33.89050442,80.0,1,3,0,80,3,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,250
+652,Kingsford,151.2304526,-33.92100563,93.41241287,0,1,0,0,1,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,41
+5098,Maroubra,151.2401462,-33.94115917,93.41241287,0,7,0,0,1,1.0,0.0,1.0,Other,Private room,365,0,0,flexible,76
+2774,Rozelle,151.1736189,-33.86933002,93.41241287,0,3,0,90,4,1.0,2.0,2.0,House,Entire home/apt,0,0,0,moderate,401
+4855,Ultimo,151.1993285,-33.87785833,93.41241287,0,14,500,201,1,1.0,1.0,1.0,Apartment,Entire home/apt,179,0,0,strict_14_with_grace_period,161
+8393,Potts Point,151.2242555,-33.86537188,100.0,1,4,0,0,1,1.0,0.0,1.0,Apartment,Entire home/apt,0,0,0,moderate,76
+6190,Maroubra,151.2441532,-33.94292284,96.0,5,2,0,0,2,2.0,3.0,1.0,House,Private room,18,0,0,flexible,62
+341,Surry Hills,151.2124533,-33.87884822,93.41241287,0,5,0,80,2,1.0,1.0,1.0,Apartment,Entire home/apt,65,0,0,strict_14_with_grace_period,250
+7785,North Narrabeen,151.2880011,-33.69791518,96.0,41,4,0,75,4,1.0,0.0,2.0,Guesthouse,Entire home/apt,264,1,1,strict_14_with_grace_period,90
+785,Lane Cove,151.1749124,-33.81252055,99.0,51,1,199,69,6,2.0,2.0,4.0,Apartment,Entire home/apt,70,0,1,moderate,169
+9922,Little Bay,151.2391262,-33.98063585,97.0,25,3,800,150,8,2.0,3.0,5.0,House,Entire home/apt,143,0,1,moderate,295
+6628,Erskineville,151.1861354,-33.90300662,100.0,2,3,0,0,4,1.0,2.0,2.0,House,Entire home/apt,123,1,0,flexible,140
+4307,Potts Point,151.2228985,-33.87067374,90.0,4,1,0,0,1,1.0,1.0,1.0,Hostel,Shared room,272,0,0,flexible,36
+8928,Northbridge,151.2115613,-33.80767465,99.0,47,2,0,60,4,1.5,1.0,2.0,Guest suite,Entire home/apt,128,1,1,moderate,116
+7533,Kingsford,151.2323373,-33.9229363,80.0,2,3,200,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,strict_14_with_grace_period,51
+7172,Redfern,151.2139386,-33.89893785,93.41241287,0,7,500,70,2,1.0,1.0,1.0,Condominium,Entire home/apt,20,0,0,strict_14_with_grace_period,150
+8857,Bondi Beach,151.269777,-33.89330409,100.0,2,5,0,0,2,1.0,2.0,2.0,Apartment,Entire home/apt,0,0,0,flexible,180
+9255,Paddington,151.2273192,-33.88863606,93.41241287,0,14,0,0,1,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,35
+7550,Burwood,151.1034274,-33.87615875,93.0,127,1,0,30,2,1.0,1.0,2.0,House,Private room,262,1,0,strict_14_with_grace_period,120
+2477,Sydney Olympic Park,151.0719212,-33.84585,97.0,21,3,500,143,5,2.0,2.0,2.0,Apartment,Entire home/apt,143,0,0,strict_14_with_grace_period,179
+760,Double Bay,151.2405594,-33.87543887,93.41241287,0,2,0,40,2,0.0,0.0,2.0,Apartment,Private room,0,1,0,flexible,129
+9897,North Curl Curl,151.2842451,-33.76131552,93.41241287,0,5,0,100,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,flexible,100
+7799,Newport,151.3199427,-33.64915873,100.0,2,3,1000,300,6,1.5,3.0,3.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,599
+3484,Ashfield,151.1340513,-33.8886819,100.0,2,3,200,15,1,1.5,1.0,1.0,Bed and breakfast,Private room,132,1,0,moderate,53
+1414,Balmain,151.1767842,-33.85857744,93.41241287,0,4,500,201,2,1.0,1.0,1.0,Apartment,Entire home/apt,19,0,0,strict_14_with_grace_period,159
+6226,Bondi Beach,151.2689354,-33.88641166,90.0,25,3,300,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,310,1,0,strict_14_with_grace_period,111
+2896,South Coogee,151.2600571,-33.93258046,93.41241287,0,7,1000,150,5,1.0,2.0,2.0,Apartment,Entire home/apt,83,1,0,strict_14_with_grace_period,200
+2470,Zetland,151.2102461,-33.90415126,96.0,10,3,0,9,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,strict_14_with_grace_period,200
+5927,Zetland,151.2100387,-33.90470906,100.0,5,2,200,50,4,2.0,2.0,2.0,Apartment,Entire home/apt,0,0,1,flexible,59
+4449,Bondi Beach,151.2726826,-33.89061843,97.0,33,2,0,125,4,1.0,2.0,2.0,Apartment,Entire home/apt,71,1,1,moderate,285
+7779,Rhodes,151.086695,-33.82706226,100.0,1,1,200,20,2,1.0,1.0,1.0,Apartment,Private room,23,0,0,flexible,76
+6953,Bondi,151.2650882,-33.8938772,93.0,15,2,170,95,2,1.0,1.0,1.0,Apartment,Entire home/apt,246,1,0,flexible,196
+960,Manly,151.2800327,-33.79956621,100.0,4,2,0,100,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,flexible,200
+9740,Campbelltown,150.8233649,-34.06160759,100.0,2,1,150,0,2,1.0,0.0,1.0,Apartment,Private room,42,0,0,flexible,53
+1931,Fairlight,151.2775283,-33.79512772,93.41241287,0,10,1000,100,4,1.0,2.0,3.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,250
+1986,Bondi,151.2603323,-33.8895178,100.0,1,5,200,50,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,0,0,flexible,190
+8312,North Manly,151.2749853,-33.76777163,95.0,66,2,150,0,3,1.0,0.0,1.0,Guesthouse,Entire home/apt,168,1,0,moderate,100
+8761,Clovelly,151.2664996,-33.91257603,93.41241287,0,6,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,120
+1053,Strathfield,151.0943017,-33.8723939,88.0,16,2,500,110,4,2.0,2.0,2.0,Apartment,Entire home/apt,87,0,0,strict_14_with_grace_period,109
+2960,Rooty Hill,150.8452849,-33.77438773,73.0,4,2,0,0,2,1.0,1.0,1.0,House,Private room,180,0,0,flexible,70
+7134,Bilgola Plateau,151.3135391,-33.6487175,93.41241287,0,14,4000,150,5,3.0,4.0,4.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,280
+5664,Bondi Beach,151.2643269,-33.88851902,100.0,1,5,500,50,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,300
+6877,Vaucluse,151.2835304,-33.85853558,100.0,2,4,3000,200,8,3.0,4.0,4.0,House,Entire home/apt,90,0,0,strict_14_with_grace_period,700
+4845,North Rocks,151.0245629,-33.77931876,100.0,2,1,0,20,2,1.0,1.0,1.0,House,Private room,187,0,0,moderate,50
+6161,Arncliffe,151.1508399,-33.93678714,93.41241287,0,3,0,0,4,1.0,2.0,3.0,House,Private room,0,1,0,flexible,170
+5682,Bondi Beach,151.277112,-33.88642494,93.41241287,1,5,0,120,4,1.0,1.0,1.0,Apartment,Entire home/apt,1,0,0,strict_14_with_grace_period,120
+3603,Bondi Beach,151.273165,-33.89383092,93.41241287,0,1,0,0,1,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,80
+8491,Balmain East,151.1893743,-33.8591888,95.0,11,4,500,370,6,1.0,3.0,4.0,House,Entire home/apt,0,0,0,moderate,319
+7277,Elizabeth Bay,151.2246311,-33.87264242,93.41241287,0,5,0,0,2,1.0,0.0,1.0,Apartment,Entire home/apt,0,1,0,flexible,195
+8389,Bondi Beach,151.2781454,-33.88958536,93.41241287,0,4,450,30,1,1.0,1.0,1.0,Apartment,Private room,0,1,0,moderate,350
+3299,Northbridge,151.2168946,-33.80805493,96.0,33,1,0,25,2,1.0,1.0,1.0,Guesthouse,Entire home/apt,68,0,0,moderate,94
+5888,Coogee,151.2547847,-33.91803404,100.0,26,3,500,180,6,1.0,3.0,4.0,Apartment,Entire home/apt,244,0,1,strict_14_with_grace_period,240
+9878,zetland,151.205998,-33.90953837,93.0,11,3,0,15,3,1.0,1.0,1.0,Loft,Entire home/apt,0,1,0,moderate,139
+1393,Stanmore,151.1673094,-33.89522589,93.0,3,3,0,70,4,1.0,2.0,2.0,House,Entire home/apt,0,1,0,flexible,185
+7684,Bondi Beach,151.2708472,-33.89216246,100.0,1,2,200,40,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,strict_14_with_grace_period,80
+801,Bondi Beach,151.2679935,-33.88830336,92.0,5,3,0,20,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,strict_14_with_grace_period,100
+543,Allambie Heights,151.2493285,-33.76542661,93.41241287,1,1,0,30,1,1.0,1.0,2.0,Guest suite,Private room,363,0,0,flexible,55
+2906,Manly,151.2792363,-33.79834021,97.0,61,2,300,150,7,2.0,3.0,3.0,Apartment,Entire home/apt,232,0,0,strict_14_with_grace_period,440
+3600,Manly,151.2877396,-33.80082939,97.0,22,4,300,140,2,1.0,1.0,1.0,Apartment,Entire home/apt,60,1,0,strict_14_with_grace_period,179
+9697,Epping,151.0667801,-33.77396734,100.0,5,2,0,30,2,1.0,1.0,1.0,Villa,Private room,365,1,0,strict_14_with_grace_period,59
+4677,Bondi Beach,151.2709469,-33.88744639,87.0,3,2,0,45,2,1.0,0.0,1.0,Other,Entire home/apt,0,1,0,moderate,119
+3566,Surry Hills,151.2115448,-33.87848834,92.0,15,28,350,65,2,1.0,1.0,1.0,Apartment,Entire home/apt,275,1,1,strict_14_with_grace_period,130
+7760,North Epping,151.1040592,-33.76166373,100.0,1,5,0,75,6,2.0,4.0,4.0,House,Private room,0,1,0,flexible,26
+6302,Mascot,151.1885978,-33.92091313,89.0,17,2,0,0,1,1.0,1.0,1.0,Apartment,Private room,8,0,0,moderate,39
+3437,Waitara,151.1076709,-33.71082279,100.0,19,4,0,79,6,2.0,2.0,3.0,Loft,Entire home/apt,28,0,1,strict_14_with_grace_period,98
+3362,Chippendale,151.202305,-33.88592745,96.0,11,2,0,20,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,strict_14_with_grace_period,80
+2098,Zetland,151.2115233,-33.9102328,84.0,5,3,350,7,2,1.0,1.0,1.0,Condominium,Entire home/apt,187,1,0,moderate,85
+8763,Freshwater,151.2812362,-33.76932101,93.41241287,0,6,0,0,7,2.5,3.0,5.0,House,Entire home/apt,0,0,0,flexible,390
+6172,Clovelly,151.2548016,-33.90690991,96.0,9,5,1250,45,2,1.0,1.0,1.0,Apartment,Entire home/apt,365,1,0,moderate,175
+4351,Waterloo,151.2128386,-33.8966194,93.0,63,1,0,70,3,1.0,1.0,2.0,Apartment,Entire home/apt,169,0,0,flexible,155
+5377,Vaucluse,151.2806924,-33.86306888,93.41241287,0,7,1000,250,4,3.5,3.0,3.0,House,Entire home/apt,0,0,0,strict_14_with_grace_period,800
+4170,Sans Souci,151.1325702,-33.98605844,78.0,10,2,500,98,10,2.0,5.0,7.0,House,Private room,0,1,0,strict_14_with_grace_period,580
+7746,Dee Why,151.295842,-33.76619351,93.41241287,0,3,0,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,83,0,0,flexible,220
+3509,Lilli Pilli,151.1125994,-34.07241193,97.0,6,2,375,150,4,3.0,2.0,2.0,House,Entire home/apt,342,0,0,flexible,299
+3476,Surry Hills,151.2115391,-33.88226127,97.0,7,2,150,15,2,1.0,1.0,1.0,Townhouse,Private room,0,0,0,moderate,85
+9721,Allambie Heights,151.2601175,-33.77779251,100.0,21,2,500,75,2,1.0,1.0,2.0,Guesthouse,Entire home/apt,186,1,1,moderate,85
+9483,Pyrmont,151.1952989,-33.87473812,93.41241287,0,3,0,0,2,1.0,1.0,1.0,Condominium,Entire home/apt,0,0,0,flexible,150
+4812,Surry Hills,151.2142421,-33.8883054,93.41241287,0,21,750,90,2,1.0,1.0,1.0,Apartment,Entire home/apt,131,1,0,strict_14_with_grace_period,170
+7123,Alexandria,151.1910754,-33.90445544,100.0,4,3,0,10,2,1.0,1.0,1.0,House,Private room,0,0,0,flexible,80
+707,Woolloomooloo,151.2192911,-33.87439722,90.0,2,3,800,50,3,1.0,1.0,2.0,Loft,Entire home/apt,174,1,0,moderate,130
+4665,Drummoyne,151.1495998,-33.85687415,100.0,3,4,0,80,6,1.5,3.0,4.0,House,Entire home/apt,0,0,0,flexible,144
+6299,Surry Hills,151.214541,-33.87964503,100.0,1,4,500,60,2,1.0,1.0,1.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,165
+9759,Avalon Beach,151.3311839,-33.62001809,100.0,3,5,0,120,8,2.0,4.0,5.0,House,Entire home/apt,340,0,0,strict_14_with_grace_period,333
+5705,Rozelle,151.1704646,-33.86775691,100.0,1,1,0,0,2,1.5,1.0,1.0,House,Private room,365,1,0,flexible,161
+2190,Lane Cove,151.1753955,-33.82049992,93.41241287,0,7,1349,540,10,4.5,5.0,5.0,House,Entire home/apt,0,0,0,flexible,2023
+5513,Sydney,151.1658863,-33.86425727,98.0,67,2,0,50,3,2.5,2.0,3.0,House,Entire home/apt,251,0,1,flexible,140
+9292,Balgowlah,151.2577277,-33.79116359,90.0,2,1,0,0,1,2.0,1.0,1.0,House,Private room,45,0,0,flexible,39
+4941,Coogee,151.2548361,-33.91417076,80.0,1,3,0,100,6,2.0,3.0,4.0,Apartment,Entire home/apt,0,1,0,strict_14_with_grace_period,221
+77,Strathfield,151.0915036,-33.86595346,90.0,3,2,300,20,3,1.0,1.0,2.0,Apartment,Private room,0,0,0,moderate,70
+1846,Woollahra,151.242739,-33.88831369,98.0,43,2,200,0,2,1.5,1.0,1.0,Apartment,Private room,0,0,0,strict_14_with_grace_period,94
+4282,Cromer,151.2662022,-33.73263766,100.0,3,7,500,150,5,1.0,3.0,3.0,House,Entire home/apt,0,0,0,flexible,150
+4548,Clovelly,151.2602734,-33.91063566,94.0,54,1,0,0,2,1.0,1.0,1.0,House,Private room,334,1,0,flexible,85
+8684,Sydney Olympic Park,151.0719185,-33.84663711,98.0,51,1,0,69,6,2.0,2.0,2.0,Apartment,Entire home/apt,296,1,1,strict_14_with_grace_period,200
+7299,Queenscliff,151.2896137,-33.78635394,100.0,4,2,0,10,2,1.0,1.0,1.0,Apartment,Private room,88,0,0,flexible,65
+9380,Collaroy,151.2982909,-33.73677853,96.0,66,2,175,40,4,1.0,1.0,2.0,Guest suite,Entire home/apt,156,0,1,moderate,111
+3966,Campsie,151.0992085,-33.9170588,80.0,1,1,200,20,2,1.0,1.0,1.0,Apartment,Private room,15,1,0,strict_14_with_grace_period,40
+8273,Bundeena,151.1571661,-34.08348676,100.0,1,3,500,50,6,2.0,3.0,4.0,Cottage,Entire home/apt,87,0,0,moderate,349
+9645,Surry Hills,151.2170036,-33.8828532,93.41241287,0,5,0,0,2,1.0,1.0,1.0,Apartment,Private room,0,0,0,flexible,60
+6,Kingsford,151.2338701,-33.92319118,93.41241287,1,1,150,0,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,strict_14_with_grace_period,43
+5406,Newtown,151.1885537,-33.8928927,100.0,3,5,0,0,2,1.0,1.0,1.0,House,Private room,8,0,0,flexible,59
+2528,Homebush,151.0857276,-33.86329138,93.0,18,1,198,41,4,1.0,1.0,2.0,Apartment,Entire home/apt,0,0,0,flexible,128
+2074,Waverley,151.2540873,-33.90496367,97.0,60,2,150,120,4,1.5,2.0,2.0,Apartment,Entire home/apt,49,1,1,moderate,140
+8104,Little Bay,151.2444598,-33.98247729,96.0,11,2,0,0,2,1.0,1.0,1.0,Apartment,Private room,80,0,0,flexible,59
+3764,Woollahra,151.249194,-33.88950992,80.0,3,7,0,0,2,1.0,1.0,1.0,House,Private room,89,0,0,strict_14_with_grace_period,69
+7813,Lalor Park,150.9212963,-33.76260604,95.0,23,3,0,54,4,1.0,0.0,2.0,Other,Entire home/apt,155,0,1,flexible,47
+183,Darlinghurst,151.2253443,-33.87808159,91.0,14,2,0,0,4,1.0,2.0,2.0,House,Entire home/apt,244,0,0,strict_14_with_grace_period,179
+864,Coogee,151.2589731,-33.918698,100.0,1,2,200,20,2,1.0,1.0,1.0,Apartment,Private room,0,1,0,strict_14_with_grace_period,89
+3561,Dee Why,151.2861426,-33.77382518,100.0,5,2,0,0,2,1.0,0.0,1.0,Cabin,Entire home/apt,14,0,0,flexible,97
+784,Newtown,151.1775931,-33.90386407,93.0,32,1,0,0,2,1.0,1.0,1.0,Apartment,Private room,313,1,0,moderate,85
+1535,Bondi Junction,151.2557973,-33.8907689,93.0,9,3,500,80,4,1.0,2.0,2.0,House,Entire home/apt,0,1,0,strict_14_with_grace_period,240
+3629,Merrylands,150.9937346,-33.8363293,85.0,28,2,0,210,6,2.0,2.0,3.0,Apartment,Entire home/apt,62,0,0,strict_14_with_grace_period,100
+8513,Bondi Junction,151.2495466,-33.89253381,100.0,2,7,200,0,2,1.0,1.0,1.0,Apartment,Entire home/apt,32,1,0,strict_14_with_grace_period,139
+2571,Middle Cove,151.2048514,-33.78927893,93.41241287,0,4,500,160,6,2.5,3.0,5.0,House,Entire home/apt,83,0,0,flexible,275
+1704,Narraweena,151.2742999,-33.75787818,100.0,3,5,500,150,7,1.0,3.0,4.0,House,Entire home/apt,362,1,0,strict_14_with_grace_period,325
+8003,Strathfield,151.0764816,-33.87577525,93.0,3,21,0,0,1,1.0,1.0,1.0,House,Private room,364,0,1,moderate,35
