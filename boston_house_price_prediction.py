@@ -14,8 +14,6 @@ from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
 
 # Set page config
 st.set_page_config(page_title="Boston Housing Price Predictor", layout="wide", page_icon="🏘️")
@@ -136,9 +134,43 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["📊 Data Analysis", "🧮 Model Performance", "📘 Model Explanation", "🔮 Prediction"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📘 Learn", "📊 Data Analysis", "🧮 Model Performance", "🔮 Prediction", "🧠 Quiz"])
 
 with tab1:
+    st.header("Understanding Boston Housing Price Prediction")
+    
+    st.subheader("What is Boston Housing Price Prediction?")
+    st.write("""
+    Boston Housing Price Prediction is a classic machine learning problem where we try to estimate the median value of owner-occupied homes in Boston based on various features of the neighborhood and the house itself.
+    """)
+    
+    st.subheader("Why is it important?")
+    st.write("""
+    1. **Real Estate Market Analysis**: Helps in understanding factors affecting housing prices.
+    2. **Urban Planning**: Provides insights into how different factors influence property values.
+    3. **Investment Decisions**: Aids investors in making informed decisions about real estate investments.
+    4. **Policy Making**: Helps policymakers understand the impact of various factors on housing affordability.
+    """)
+    
+    st.subheader("Key Factors in Predicting Housing Prices")
+    st.write("""
+    - **CRIM**: Crime rate in the area
+    - **RM**: Average number of rooms per dwelling
+    - **LSTAT**: Percentage of lower status of the population
+    - **PTRATIO**: Pupil-teacher ratio by town
+    - **NOX**: Nitric oxides concentration
+    """)
+    
+    st.subheader("How Machine Learning Helps")
+    st.write("""
+    Machine learning algorithms can:
+    1. Identify complex relationships between various features and housing prices.
+    2. Handle large datasets with multiple variables efficiently.
+    3. Provide insights into which factors most strongly influence housing prices.
+    4. Make predictions on new, unseen data based on learned patterns.
+    """)
+
+with tab2:
     st.header("Data Analysis")
     
     # Dataset Explorer
@@ -173,7 +205,7 @@ with tab1:
     fig_corr = px.imshow(corr, color_continuous_scale='RdBu_r', aspect="auto")
     st.plotly_chart(fig_corr)
 
-with tab2:
+with tab3:
     st.header("Model Performance")
     col1, col2 = st.columns(2)
     
@@ -205,70 +237,6 @@ with tab2:
         fig = px.bar(feature_imp, x='importance', y='feature', orientation='h')
         st.plotly_chart(fig)
 
-with tab3:
-    st.header("Model Explanation")
-    
-    if algorithm == "Linear Regression":
-        st.write("""
-        Linear Regression finds the best linear relationship between the input features and the target variable (MEDV).
-        It assumes that the housing price can be predicted as a weighted sum of the input features.
-
-        The equation is: MEDV = w1*x1 + w2*x2 + ... + wn*xn + b
-
-        Where w1, w2, ..., wn are the weights for each feature, x1, x2, ..., xn are the feature values, and b is the bias term.
-        """)
-
-    elif algorithm == "Ridge Regression":
-        st.write("""
-        Ridge Regression is similar to Linear Regression but adds a penalty term to prevent overfitting.
-        It's useful when there might be high correlations between input features.
-
-        The objective is to minimize: ||y - Xw||² + α||w||²
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Lasso Regression":
-        st.write("""
-        Lasso Regression also adds a penalty term, but it can completely eliminate the impact of less important features.
-        This makes it useful for feature selection.
-
-        The objective is to minimize: ||y - Xw||² + α||w||₁
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Decision Tree":
-        st.write("""
-        Decision Tree creates a tree-like model of decisions based on the input features.
-        It splits the data based on different conditions to make predictions.
-
-        For example: If (RM > 6) and (LSTAT < 10), then predict high housing price.
-
-        The tree is created by minimizing impurity (often measured by mean squared error for regression) at each split.
-        """)
-
-    elif algorithm == "Random Forest":
-        st.write("""
-        Random Forest is an ensemble of Decision Trees. It creates multiple trees and aggregates their predictions.
-        This helps to reduce overfitting and improve generalization.
-
-        The final prediction is typically the average of all individual tree predictions:
-        Prediction = (Tree1 + Tree2 + ... + TreeN) / N
-
-        Where N is the number of trees in the forest.
-        """)
-
-    elif algorithm == "Support Vector Regression":
-        st.write("""
-        Support Vector Regression tries to find a function that deviates from y by a value no greater than ε for each training point x.
-
-        It aims to solve:
-        minimize 1/2 ||w||² subject to |y - f(x)| ≤ ε
-
-        Where f(x) is the prediction function and ε is the maximum allowed deviation.
-        """)
-
 with tab4:
     st.header("Make a Prediction")
     col1, col2 = st.columns(2)
@@ -277,11 +245,11 @@ with tab4:
     
     with col1:
         for feature in X.columns[:len(X.columns)//2]:
-            input_data[feature] = st.number_input(f"{feature}", value=float(X[feature].mean()))
+            input_data[feature] = st.slider(f"{feature}", float(X[feature].min()), float(X[feature].max()), float(X[feature].mean()))
     
     with col2:
         for feature in X.columns[len(X.columns)//2:]:
-            input_data[feature] = st.number_input(f"{feature}", value=float(X[feature].mean()))
+            input_data[feature] = st.slider(f"{feature}", float(X[feature].min()), float(X[feature].max()), float(X[feature].mean()))
 
     if st.button("🏘️ Predict Housing Price", key="predict_button"):
         # Create a DataFrame with all features
@@ -289,6 +257,36 @@ with tab4:
         
         prediction = model.predict(input_df)
         st.success(f"Predicted Median Value: ${prediction[0]:.2f}k")
+
+with tab5:
+    st.header("Test Your Knowledge")
+    
+    questions = [
+        {
+            "question": "What does MEDV represent in the Boston Housing dataset?",
+            "options": ["Median value of owner-occupied homes", "Mean value of all homes", "Maximum value of rented homes"],
+            "correct": 0
+        },
+        {
+            "question": "Which of the following is NOT a feature in the Boston Housing dataset?",
+            "options": ["Crime rate", "Number of rooms", "House age", "Pupil-teacher ratio"],
+            "correct": 2
+        },
+        {
+            "question": "Why is the Boston Housing dataset important in machine learning?",
+            "options": ["It's a classic dataset for regression problems", "It only contains data about Boston", "It's the largest housing dataset available"],
+            "correct": 0
+        }
+    ]
+    
+    for i, q in enumerate(questions):
+        st.subheader(f"Question {i+1}")
+        user_answer = st.radio(q["question"], q["options"], key=f"q{i}")
+        if st.button(f"Check Answer {i+1}", key=f"check{i}"):
+            if q["options"].index(user_answer) == q["correct"]:
+                st.success("Correct!")
+            else:
+                st.error(f"Incorrect. The correct answer is: {q['options'][q['correct']]}")
 
 # Run the Streamlit app
 if __name__ == "__main__":
