@@ -62,14 +62,6 @@ def load_data():
 
 data = load_data()
 
-if data is None or data.empty:
-    st.error("Failed to load the dataset. Please check the data source.")
-    st.stop()
-
-# Print data info for debugging
-st.write("Dataset Info:")
-st.write(data.info())
-
 # Prepare the data
 @st.cache_data
 def prepare_data(data):
@@ -107,7 +99,7 @@ model.fit(X_train_scaled, y_train)
 y_pred = model.predict(X_test_scaled)
 
 # Main content
-tab1, tab2, tab3, tab4 = st.tabs(["📚 Learn", "📊 Data Analysis", "🧮 Model Performance", "🧠 Quiz"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📚 Learn", "📊 Data Analysis", "🧮 Model Performance", "🔮 Predictions", "🧠 Quiz"])
 
 with tab1:
     st.header("📚 Learn About Graduate Admissions")
@@ -223,6 +215,51 @@ with tab3:
         st.plotly_chart(fig_importance, use_container_width=True)
 
 with tab4:
+    st.header("🔮 Make a Prediction")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        gre_score = st.slider("GRE Score", 200, 340, 300)
+        toefl_score = st.slider("TOEFL Score", 0, 120, 100)
+        university_rating = st.slider("University Rating", 1, 5, 3)
+        sop = st.slider("SOP", 1.0, 5.0, 3.0, 0.5)
+    
+    with col2:
+        lor = st.slider("LOR", 1.0, 5.0, 3.0, 0.5)
+        cgpa = st.slider("CGPA", 0.0, 10.0, 8.0, 0.1)
+        research = st.selectbox("Research Experience", [0, 1])
+
+    if st.button("🎓 Predict Chance of Admission"):
+        input_data = pd.DataFrame([[gre_score, toefl_score, university_rating, sop, lor, cgpa, research]], 
+                                  columns=['GRE Score', 'TOEFL Score', 'University Rating', 'SOP', 'LOR', 'CGPA', 'Research'])
+        
+        input_scaled = scaler.transform(input_data)
+        prediction = model.predict(input_scaled)
+        st.success(f"Predicted Chance of Admission: {prediction[0]:.2%}")
+        
+        # Radar chart for input features
+        features = ['GRE Score', 'TOEFL Score', 'University Rating', 'SOP', 'LOR', 'CGPA', 'Research']
+        values = input_data.values[0].tolist()
+        
+        fig = go.Figure(data=go.Scatterpolar(
+          r=values,
+          theta=features,
+          fill='toself'
+        ))
+
+        fig.update_layout(
+          polar=dict(
+            radialaxis=dict(
+              visible=True,
+              range=[0, max(values)]
+            )),
+          showlegend=False
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
+
+with tab5:
     st.header("🧠 Test Your Knowledge")
     
     questions = [
@@ -275,21 +312,3 @@ with tab4:
 
 st.sidebar.markdown("---")
 st.sidebar.info("This app demonstrates the factors influencing graduate admission chances. Adjust the parameters and explore the different tabs to learn more!")
-
-# Prediction Section
-st.sidebar.header("Make a Prediction")
-gre_score = st.sidebar.slider("GRE Score", 200, 340, 300)
-toefl_score = st.sidebar.slider("TOEFL Score", 0, 120, 100)
-university_rating = st.sidebar.slider("University Rating", 1, 5, 3)
-sop = st.sidebar.slider("SOP", 1.0, 5.0, 3.0, 0.5)
-lor = st.sidebar.slider("LOR", 1.0, 5.0, 3.0, 0.5)
-cgpa = st.sidebar.slider("CGPA", 0.0, 10.0, 8.0, 0.1)
-research = st.sidebar.selectbox("Research Experience", [0, 1])
-
-if st.sidebar.button("🎓 Predict Chance of Admission"):
-    input_data = pd.DataFrame([[gre_score, toefl_score, university_rating, sop, lor, cgpa, research]], 
-                              columns=['GRE Score', 'TOEFL Score', 'University Rating', 'SOP', 'LOR', 'CGPA', 'Research'])
-    
-    input_scaled = scaler.transform(input_data)
-    prediction = model.predict(input_scaled)
-    st.sidebar.success(f"Predicted Chance of Admission: {prediction[0]:.2%}")
