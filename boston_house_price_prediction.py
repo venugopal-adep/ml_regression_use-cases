@@ -1,318 +1,241 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
+import pandas as pd
+import numpy as np
+from sklearn.datasets import load_boston
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.svm import SVR
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.impute import SimpleImputer
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.metrics import mean_squared_error, r2_score
 
 # Set page config
-st.set_page_config(page_title="Boston Housing Price Predictor", layout="wide", page_icon="🏘️")
+st.set_page_config(page_title="Boston Housing Price Predictor", layout="wide", initial_sidebar_state="expanded")
 
-# Custom CSS
+# Custom CSS for better appearance
 st.markdown("""
-    <style>
-    .main {
-        background-color: #f0f2f6;
-    }
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
-        background-color: #4e8df5;
-        border-radius: 4px 4px 0px 0px;
-        gap: 1px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #0c43a3;
-    }
-    .stMarkdown {
-        text-align: left;
-    }
-    .stButton>button {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-    }
-    </style>
+<style>
+.stApp {
+    background-color: #f0f8ff;
+}
+.stButton>button {
+    background-color: #4b0082;
+    color: white;
+}
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2px;
+}
+.stTabs [data-baseweb="tab"] {
+    height: 50px;
+    white-space: pre-wrap;
+    background-color: #e6e6fa;
+    border-radius: 4px 4px 0 0;
+    gap: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.stTabs [aria-selected="true"] {
+    background-color: #8a2be2;
+    color: white;
+}
+.highlight {
+    background-color: #ffd700;
+    padding: 5px;
+    border-radius: 3px;
+}
+</style>
 """, unsafe_allow_html=True)
 
-# Load the data
-@st.cache_data
-def load_data():
-    data = pd.read_csv('boston.csv')
-    return data
+# Title and description
+st.title("🏘️ Boston Housing Price Predictor")
+st.markdown("**Developed by: Venugopal Adep**")
+st.markdown("Discover the factors influencing Boston housing prices and predict home values!")
 
-data = load_data()
+# Helper functions
+def load_dataset():
+    boston = load_boston()
+    data = pd.DataFrame(boston.data, columns=boston.feature_names)
+    data['PRICE'] = boston.target
+    return data, boston.feature_names
 
-# Column explanations
-column_explanations = {
-    "CRIM": "Per capita crime rate by town",
-    "ZN": "Proportion of residential land zoned for lots over 25,000 sq.ft.",
-    "INDUS": "Proportion of non-retail business acres per town",
-    "CHAS": "Charles River dummy variable (1 if tract bounds river; 0 otherwise)",
-    "NOX": "Nitric oxides concentration (parts per 10 million)",
-    "RM": "Average number of rooms per dwelling",
-    "AGE": "Proportion of owner-occupied units built prior to 1940",
-    "DIS": "Weighted distances to five Boston employment centres",
-    "RAD": "Index of accessibility to radial highways",
-    "TAX": "Full-value property-tax rate per $10,000",
-    "PTRATIO": "Pupil-teacher ratio by town",
-    "B": "1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town",
-    "LSTAT": "% lower status of the population",
-    "MEDV": "Median value of owner-occupied homes in $1000's (Target Variable)"
-}
+def train_and_evaluate_model(X_train, X_test, y_train, y_test, model):
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+    return model, y_pred, mse, r2
+
+def plot_feature_importance(feature_names, feature_importance):
+    feature_importance_df = pd.DataFrame({'feature': feature_names, 'importance': feature_importance})
+    feature_importance_df = feature_importance_df.sort_values('importance', ascending=False)
+    fig = px.bar(feature_importance_df, x='importance', y='feature', title='Feature Importance')
+    return fig
+
+def plot_actual_vs_predicted(y_test, y_pred):
+    fig = px.scatter(x=y_test, y=y_pred, labels={'x': 'Actual Price', 'y': 'Predicted Price'})
+    fig.add_trace(go.Scatter(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], 
+                             mode='lines', name='Ideal'))
+    fig.update_layout(title="Actual vs Predicted Housing Prices")
+    return fig
+
+# Load data
+data, feature_names = load_dataset()
 
 # Sidebar
-st.sidebar.title("🏘️ Boston Housing Price Predictor")
+st.sidebar.header("Configuration")
+model_name = st.sidebar.selectbox('Select Model', ['Linear Regression', 'Decision Tree', 'Random Forest'])
+test_size = st.sidebar.slider('Test Set Size (%)', min_value=10, max_value=50, value=20, step=5) / 100.0
+random_state = st.sidebar.number_input('Random State', min_value=0, max_value=100, value=42)
 
-# Algorithm selection
-algorithm = st.sidebar.selectbox(
-    "Select Regression Algorithm",
-    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
-     "Decision Tree", "Random Forest", "Support Vector Regression"]
-)
+# Prepare data
+X = data.drop('PRICE', axis=1)
+y = data['PRICE']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
 
-# Main content
-st.title("Boston Housing Price Predictor")
-st.write("Predict the median value of owner-occupied homes based on various features.")
+# Scale features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
-# Prepare the data
-@st.cache_data
-def prepare_data(data):
-    # Separate features and target
-    X = data.drop('MEDV', axis=1)
-    y = data['MEDV']
-    
-    # Identify numeric and categorical columns
-    numeric_features = X.select_dtypes(include=['int64', 'float64']).columns
-    categorical_features = X.select_dtypes(include=['object']).columns
-    
-    # Create preprocessor
-    preprocessor = ColumnTransformer(
-        transformers=[
-            ('num', StandardScaler(), numeric_features),
-            ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_features)
-        ])
-    
-    return X, y, preprocessor, numeric_features, categorical_features
-
-X, y, preprocessor, numeric_features, categorical_features = prepare_data(data)
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Model training and prediction
+# Train and evaluate model
 models = {
-    "Linear Regression": LinearRegression(),
-    "Ridge Regression": Ridge(),
-    "Lasso Regression": Lasso(),
-    "Decision Tree": DecisionTreeRegressor(),
-    "Random Forest": RandomForestRegressor(),
-    "Support Vector Regression": SVR()
+    'Linear Regression': LinearRegression(),
+    'Decision Tree': DecisionTreeRegressor(),
+    'Random Forest': RandomForestRegressor()
 }
 
-# Create a pipeline with preprocessor and model
-model = Pipeline([
-    ('preprocessor', preprocessor),
-    ('regressor', models[algorithm])
-])
+model = models[model_name]
+model, y_pred, mse, r2 = train_and_evaluate_model(X_train_scaled, X_test_scaled, y_train, y_test, model)
 
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
-
-# Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["📘 Learn", "📊 Data Analysis", "🧮 Model Performance", "🔮 Prediction", "🧠 Quiz"])
+# Main content
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📚 Learn", "📊 Data Visualization", "📈 Model Performance", "🔮 Prediction", "🧠 Quiz"])
 
 with tab1:
     st.header("Understanding Boston Housing Price Prediction")
     
-    st.subheader("What is Boston Housing Price Prediction?")
-    st.write("""
-    Boston Housing Price Prediction is a classic machine learning problem where we try to estimate the median value of owner-occupied homes in Boston based on various features of the neighborhood and the house itself.
-    """)
+    st.markdown("""
+    <div style="background-color: #e6e6fa; padding: 20px; border-radius: 10px;">
+    <h3>What is the Boston Housing Dataset?</h3>
+    <p>The Boston Housing Dataset is a famous dataset in machine learning that contains information about various features of houses in Boston and their median values.</p>
+    </div>
+    """, unsafe_allow_html=True)
     
-    st.subheader("Why is it important?")
-    st.write("""
-    1. **Real Estate Market Analysis**: Helps in understanding factors affecting housing prices.
-    2. **Urban Planning**: Provides insights into how different factors influence property values.
-    3. **Investment Decisions**: Aids investors in making informed decisions about real estate investments.
-    4. **Policy Making**: Helps policymakers understand the impact of various factors on housing affordability.
-    """)
+    st.markdown("""
+    <div style="background-color: #fff0f5; padding: 20px; border-radius: 10px; margin-top: 20px;">
+    <h3>Key Features in the Dataset</h3>
+    <ul>
+        <li><strong>CRIM:</strong> Per capita crime rate by town</li>
+        <li><strong>RM:</strong> Average number of rooms per dwelling</li>
+        <li><strong>AGE:</strong> Proportion of owner-occupied units built prior to 1940</li>
+        <li><strong>LSTAT:</strong> Percentage of lower status of the population</li>
+        <li><strong>PRICE:</strong> Median value of owner-occupied homes in $1000s (Target variable)</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
     
-    st.subheader("Key Factors in Predicting Housing Prices")
-    st.write("""
-    - **CRIM**: Crime rate in the area
-    - **RM**: Average number of rooms per dwelling
-    - **LSTAT**: Percentage of lower status of the population
-    - **PTRATIO**: Pupil-teacher ratio by town
-    - **NOX**: Nitric oxides concentration
-    """)
-    
-    st.subheader("How Machine Learning Helps")
-    st.write("""
-    Machine learning algorithms can:
-    1. Identify complex relationships between various features and housing prices.
-    2. Handle large datasets with multiple variables efficiently.
-    3. Provide insights into which factors most strongly influence housing prices.
-    4. Make predictions on new, unseen data based on learned patterns.
-    """)
+    st.markdown("""
+    <div style="background-color: #f0fff0; padding: 20px; border-radius: 10px; margin-top: 20px;">
+    <h3>Why is this Dataset Important?</h3>
+    <ul>
+        <li><span class="highlight">Benchmark Dataset:</span> Widely used for testing machine learning algorithms</li>
+        <li><span class="highlight">Real-world Application:</span> Provides insights into factors affecting housing prices</li>
+        <li><span class="highlight">Feature Relationships:</span> Demonstrates complex interactions between various features</li>
+        <li><span class="highlight">Regression Problem:</span> Excellent for learning and practicing regression techniques</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
 
 with tab2:
-    st.header("Data Analysis")
+    st.header("Data Visualization")
     
-    # Dataset Explorer
-    st.subheader("Dataset Explorer")
-    st.dataframe(data.head())
+    st.subheader("Feature Distributions")
+    feature_to_plot = st.selectbox("Select a feature to visualize", feature_names)
+    fig = px.histogram(data, x=feature_to_plot, nbins=30, marginal="box")
+    st.plotly_chart(fig)
     
-    # Column Explanations
-    st.subheader("Column Explanations")
-    for col, explanation in column_explanations.items():
-        st.write(f"**{col}**: {explanation}")
-    
-    # Descriptive Statistics
-    st.subheader("Descriptive Statistics")
-    st.dataframe(data.describe())
-    
-    # Univariate Analysis
-    st.subheader("Univariate Analysis")
-    feature_univariate = st.selectbox("Select a feature for univariate analysis", X.columns)
-    fig_univariate = px.histogram(data, x=feature_univariate, marginal="box")
-    st.plotly_chart(fig_univariate)
-    
-    # Bivariate Analysis
-    st.subheader("Bivariate Analysis")
-    feature_bivariate = st.selectbox("Select a feature for bivariate analysis with MEDV", 
-                                     [col for col in X.columns if col != 'MEDV'])
-    fig_bivariate = px.scatter(data, x=feature_bivariate, y='MEDV', color="RAD", hover_data=['CRIM'])
-    st.plotly_chart(fig_bivariate)
-    
-    # Correlation Heatmap
+    st.subheader("Feature Correlations with Price")
+    fig = px.scatter_matrix(data, dimensions=feature_names + ['PRICE'], color='PRICE')
+    st.plotly_chart(fig)
+
     st.subheader("Correlation Heatmap")
-    corr = data.corr()
-    fig_corr = px.imshow(corr, color_continuous_scale='RdBu_r', aspect="auto")
-    st.plotly_chart(fig_corr)
+    fig = px.imshow(data.corr(), color_continuous_scale='viridis')
+    st.plotly_chart(fig)
 
 with tab3:
     st.header("Model Performance")
-    col1, col2 = st.columns(2)
     
+    col1, col2 = st.columns(2)
     with col1:
-        st.subheader("Actual vs Predicted Housing Price")
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=y_test, y=y_pred, mode='markers', name='Predictions'))
-        fig.add_trace(go.Scatter(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], 
-                                 mode='lines', name='Ideal'))
-        fig.update_layout(xaxis_title="Actual MEDV", yaxis_title="Predicted MEDV")
-        st.plotly_chart(fig)
-        
+        st.metric("Mean Squared Error", f"{mse:.2f}")
     with col2:
-        st.subheader("Model Performance Metrics")
-        metrics = {
-            "RMSE": np.sqrt(mean_squared_error(y_test, y_pred)),
-            "MSE": mean_squared_error(y_test, y_pred),
-            "MAE": mean_absolute_error(y_test, y_pred),
-            "R2 Score": r2_score(y_test, y_pred)
-        }
-        for metric, value in metrics.items():
-            st.metric(metric, f"{value:.4f}")
-        
-    if algorithm in ["Decision Tree", "Random Forest"]:
+        st.metric("R-squared Score", f"{r2:.2f}")
+    
+    st.subheader("Actual vs Predicted Prices")
+    fig = plot_actual_vs_predicted(y_test, y_pred)
+    st.plotly_chart(fig)
+    
+    if model_name in ['Decision Tree', 'Random Forest']:
         st.subheader("Feature Importance")
-        importances = model.named_steps['regressor'].feature_importances_
-        feature_imp = pd.DataFrame({'feature': X.columns, 'importance': importances})
-        feature_imp = feature_imp.sort_values('importance', ascending=False).reset_index(drop=True)
-        fig = px.bar(feature_imp, x='importance', y='feature', orientation='h')
+        fig = plot_feature_importance(feature_names, model.feature_importances_)
         st.plotly_chart(fig)
 
 with tab4:
     st.header("Make a Prediction")
-    col1, col2 = st.columns(2)
     
     input_data = {}
+    col1, col2 = st.columns(2)
     
     with col1:
-        for feature in X.columns[:len(X.columns)//2]:
-            input_data[feature] = st.slider(f"{feature}", float(X[feature].min()), float(X[feature].max()), float(X[feature].mean()))
+        for feature in feature_names[:len(feature_names)//2]:
+            input_data[feature] = st.slider(f"{feature}", float(data[feature].min()), float(data[feature].max()), float(data[feature].mean()))
     
     with col2:
-        for feature in X.columns[len(X.columns)//2:]:
-            input_data[feature] = st.slider(f"{feature}", float(X[feature].min()), float(X[feature].max()), float(X[feature].mean()))
+        for feature in feature_names[len(feature_names)//2:]:
+            input_data[feature] = st.slider(f"{feature}", float(data[feature].min()), float(data[feature].max()), float(data[feature].mean()))
 
-    if st.button("🏘️ Predict Housing Price", key="predict_button"):
-        # Create a DataFrame with all features
+    if st.button("🏘️ Predict Housing Price"):
         input_df = pd.DataFrame([input_data])
-        
-        prediction = model.predict(input_df)
-        st.success(f"Predicted Median Value: ${prediction[0]:.2f}k")
+        input_scaled = scaler.transform(input_df)
+        prediction = model.predict(input_scaled)
+        st.success(f"Predicted Housing Price: ${prediction[0]*1000:.2f}")
 
 with tab5:
     st.header("Test Your Knowledge")
-    
+
     questions = [
         {
-            "question": "What does MEDV represent in the Boston Housing dataset?",
-            "options": ["Median value of owner-occupied homes", "Mean value of all homes", "Maximum value of rented homes"],
-            "correct": 0
+            "question": "What does the target variable 'PRICE' represent in the Boston Housing dataset?",
+            "options": ["Actual price of the house", "Median value of owner-occupied homes in $1000s", "Price per square foot"],
+            "correct": 1,
+            "explanation": "In the Boston Housing dataset, 'PRICE' represents the median value of owner-occupied homes in $1000s."
         },
         {
             "question": "Which of the following is NOT a feature in the Boston Housing dataset?",
-            "options": ["Crime rate", "Number of rooms", "House age", "Pupil-teacher ratio"],
-            "correct": 2
+            "options": ["CRIM (Per capita crime rate)", "RM (Average number of rooms)", "POPULATION (Town population)"],
+            "correct": 2,
+            "explanation": "POPULATION is not a feature in the Boston Housing dataset. The dataset includes features like CRIM and RM, but not town population directly."
         },
         {
-            "question": "Why is the Boston Housing dataset important in machine learning?",
-            "options": ["It's a classic dataset for regression problems", "It only contains data about Boston", "It's the largest housing dataset available"],
-            "correct": 0
+            "question": "Why is the Boston Housing dataset popular in machine learning?",
+            "options": ["It's the largest housing dataset available", "It's a good benchmark dataset for regression problems", "It only contains data about luxury homes"],
+            "correct": 1,
+            "explanation": "The Boston Housing dataset is popular because it's a good benchmark dataset for regression problems, containing various features that can influence housing prices."
         }
     ]
-    
+
     for i, q in enumerate(questions):
-        st.subheader(f"Question {i+1}")
-        user_answer = st.radio(q["question"], q["options"], key=f"q{i}")
-        if st.button(f"Check Answer {i+1}", key=f"check{i}"):
-            if q["options"].index(user_answer) == q["correct"]:
-                st.success("Correct!")
+        st.subheader(f"Question {i+1}: {q['question']}")
+        user_answer = st.radio(f"Select your answer for Question {i+1}:", q['options'], key=f"q{i}")
+        
+        if st.button(f"Check Answer for Question {i+1}", key=f"check{i}"):
+            if q['options'].index(user_answer) == q['correct']:
+                st.success("Correct! Great job!")
             else:
-                st.error(f"Incorrect. The correct answer is: {q['options'][q['correct']]}")
+                st.error("Not quite. Let's learn from this!")
+            st.info(f"Explanation: {q['explanation']}")
+        st.write("---")
 
-# Run the Streamlit app
-if __name__ == "__main__":
-    st.sidebar.info("This app predicts Boston housing prices based on various features.")
-
-    # Add some additional information or insights
-    st.sidebar.subheader("Did you know?")
-    st.sidebar.write("The Boston Housing dataset is a famous dataset in machine learning.")
-    st.sidebar.write("It contains information collected by the U.S Census Service concerning housing in the area of Boston, MA.")
-
-    # Add a footer
-    st.markdown("""
-    <style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #0E1117;
-        color: #FAFAFA;
-        text-align: center;
-        padding: 10px;
-        font-size: 12px;
-    }
-    </style>
-    <div class="footer">
-        Developed by Venugopal Adep | Data source: https://www.kaggle.com/datasets/schirmerchad/bostonhoustingmlnd
-    </div>
-    """, unsafe_allow_html=True)
+st.sidebar.markdown("---")
+st.sidebar.info("This app demonstrates the impact of various features on Boston housing prices. Adjust the model and data split, then explore the different tabs to learn more!")
