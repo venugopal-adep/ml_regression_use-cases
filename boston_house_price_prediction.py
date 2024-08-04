@@ -3,10 +3,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
-from sklearn.datasets import load_boston
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_regression import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
@@ -54,11 +53,10 @@ st.markdown("**Developed by: Venugopal Adep**")
 st.markdown("Discover the factors influencing Boston housing prices and predict home values!")
 
 # Helper functions
-def load_dataset():
-    boston = load_boston()
-    data = pd.DataFrame(boston.data, columns=boston.feature_names)
-    data['PRICE'] = boston.target
-    return data, boston.feature_names
+@st.cache_data
+def load_data():
+    data = pd.read_csv('boston.csv')
+    return data
 
 def train_and_evaluate_model(X_train, X_test, y_train, y_test, model):
     model.fit(X_train, y_train)
@@ -81,7 +79,7 @@ def plot_actual_vs_predicted(y_test, y_pred):
     return fig
 
 # Load data
-data, feature_names = load_dataset()
+data = load_data()
 
 # Sidebar
 st.sidebar.header("Configuration")
@@ -90,8 +88,9 @@ test_size = st.sidebar.slider('Test Set Size (%)', min_value=10, max_value=50, v
 random_state = st.sidebar.number_input('Random State', min_value=0, max_value=100, value=42)
 
 # Prepare data
-X = data.drop('PRICE', axis=1)
-y = data['PRICE']
+X = data.drop('MEDV', axis=1)
+y = data['MEDV']
+feature_names = X.columns
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
 
 # Scale features
@@ -118,7 +117,7 @@ with tab1:
     st.markdown("""
     <div style="background-color: #e6e6fa; padding: 20px; border-radius: 10px;">
     <h3>What is the Boston Housing Dataset?</h3>
-    <p>The Boston Housing Dataset is a famous dataset in machine learning that contains information about various features of houses in Boston and their median values.</p>
+    <p>The Boston Housing Dataset contains information about various features of houses in Boston and their median values.</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -130,7 +129,7 @@ with tab1:
         <li><strong>RM:</strong> Average number of rooms per dwelling</li>
         <li><strong>AGE:</strong> Proportion of owner-occupied units built prior to 1940</li>
         <li><strong>LSTAT:</strong> Percentage of lower status of the population</li>
-        <li><strong>PRICE:</strong> Median value of owner-occupied homes in $1000s (Target variable)</li>
+        <li><strong>MEDV:</strong> Median value of owner-occupied homes in $1000s (Target variable)</li>
     </ul>
     </div>
     """, unsafe_allow_html=True)
@@ -156,7 +155,7 @@ with tab2:
     st.plotly_chart(fig)
     
     st.subheader("Feature Correlations with Price")
-    fig = px.scatter_matrix(data, dimensions=feature_names + ['PRICE'], color='PRICE')
+    fig = px.scatter_matrix(data, dimensions=feature_names.tolist() + ['MEDV'], color='MEDV')
     st.plotly_chart(fig)
 
     st.subheader("Correlation Heatmap")
@@ -199,17 +198,17 @@ with tab4:
         input_df = pd.DataFrame([input_data])
         input_scaled = scaler.transform(input_df)
         prediction = model.predict(input_scaled)
-        st.success(f"Predicted Housing Price: ${prediction[0]*1000:.2f}")
+        st.success(f"Predicted Housing Price: ${prediction[0]:.2f}k")
 
 with tab5:
     st.header("Test Your Knowledge")
 
     questions = [
         {
-            "question": "What does the target variable 'PRICE' represent in the Boston Housing dataset?",
+            "question": "What does the target variable 'MEDV' represent in the Boston Housing dataset?",
             "options": ["Actual price of the house", "Median value of owner-occupied homes in $1000s", "Price per square foot"],
             "correct": 1,
-            "explanation": "In the Boston Housing dataset, 'PRICE' represents the median value of owner-occupied homes in $1000s."
+            "explanation": "In the Boston Housing dataset, 'MEDV' represents the median value of owner-occupied homes in $1000s."
         },
         {
             "question": "Which of the following is NOT a feature in the Boston Housing dataset?",
