@@ -11,43 +11,49 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import SVR
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.impute import SimpleImputer
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
 
 # Set page config
 st.set_page_config(page_title="Avocado Price Predictor", layout="wide", page_icon="🥑")
 
 # Custom CSS
 st.markdown("""
-    <style>
-    .main {
-        background-color: #f0f2f6;
-    }
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
-        background-color: #4e8df5;
-        border-radius: 4px 4px 0px 0px;
-        gap: 1px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #0c43a3;
-    }
-    .stMarkdown {
-        text-align: left;
-    }
-    .stButton>button {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-    }
-    </style>
+<style>
+.stApp {
+    background-color: #f0f8ff;
+}
+.stButton>button {
+    background-color: #4CAF50;
+    color: white;
+}
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2px;
+}
+.stTabs [data-baseweb="tab"] {
+    height: 50px;
+    white-space: pre-wrap;
+    background-color: #e6e6fa;
+    border-radius: 4px 4px 0 0;
+    gap: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.stTabs [aria-selected="true"] {
+    background-color: #4CAF50;
+    color: white;
+}
+.highlight {
+    background-color: #e6e6fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+</style>
 """, unsafe_allow_html=True)
+
+# Title and description
+st.title("🥑 Avocado Price Predictor")
+st.markdown("**Developed by: Venugopal Adep**")
+st.markdown("Explore factors influencing avocado prices and predict future prices!")
 
 # Load the data
 @st.cache_data
@@ -56,38 +62,6 @@ def load_data():
     return data
 
 data = load_data()
-
-# Column explanations
-column_explanations = {
-    "Date": "Date of the observation",
-    "type": "Conventional or organic",
-    "region": "City or region of the observation",
-    "year": "Year of observation",
-    "Total Volume": "Total number of avocados sold",
-    "PLU4046": "Total number of small/medium Hass avocados sold",
-    "PLU4225": "Total number of large Hass avocados sold",
-    "PLU4770": "Total number of extra large Hass avocados sold",
-    "Total Bags": "Total number of bags sold",
-    "Small Bags": "Total number of small bags sold",
-    "Large Bags": "Total number of large bags sold",
-    "XLarge Bags": "Total number of extra large bags sold",
-    "AveragePrice": "Average price of a single avocado (Target Variable)"
-}
-
-# Sidebar
-st.sidebar.title("🥑 Avocado Price Predictor")
-
-# Algorithm selection
-algorithm = st.sidebar.selectbox(
-    "Select Regression Algorithm",
-    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
-     "Decision Tree", "Random Forest", "Support Vector Regression"]
-)
-
-# Main content
-st.title("Avocado Price Predictor")
-st.write('**Developed by : Venugopal Adep**')
-st.write("Predict the average price of avocados based on various features.")
 
 # Prepare the data
 @st.cache_data
@@ -99,7 +73,7 @@ def prepare_data(data):
     data['DayOfWeek'] = data['Date'].dt.dayofweek
     data['Month'] = data['Date'].dt.month
     
-    # Create a copy of the original data for the word cloud
+    # Create a copy of the original data
     original_data = data.copy()
     
     # Convert categorical variables to numeric
@@ -122,6 +96,14 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
+# Sidebar
+st.sidebar.header("Parameters")
+algorithm = st.sidebar.selectbox(
+    "Select Regression Algorithm",
+    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
+     "Decision Tree", "Random Forest", "Support Vector Regression"]
+)
+
 # Model training and prediction
 models = {
     "Linear Regression": LinearRegression(),
@@ -136,70 +118,93 @@ model = models[algorithm]
 model.fit(X_train_scaled, y_train)
 y_pred = model.predict(X_test_scaled)
 
-# Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["📊 Data Analysis", "🧮 Model Performance", "📘 Model Explanation", "🔮 Prediction"])
+# Main content
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📚 Learn", "📊 Data Analysis", "🧮 Model Performance", "🔮 Predictions", "🧠 Quiz"])
 
 with tab1:
-    st.header("Data Analysis")
+    st.header("📚 Learn About Avocado Prices")
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Key Factors Influencing Avocado Prices</h3>
+    <ul>
+        <li>Type: Conventional or organic</li>
+        <li>Region: Location where avocados are sold</li>
+        <li>Total Volume: Total number of avocados sold</li>
+        <li>PLU4046, PLU4225, PLU4770: Sales of different avocado sizes</li>
+        <li>Total Bags, Small Bags, Large Bags, XLarge Bags: Sales by packaging</li>
+        <li>Season: Time of year can affect prices</li>
+        <li>Year: Prices can trend over time</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Why These Factors Matter</h3>
+    <ul>
+        <li>Supply and Demand: Total volume and regional differences affect pricing</li>
+        <li>Consumer Preferences: Different sizes and types have varying demand</li>
+        <li>Seasonal Effects: Avocado production and consumption vary throughout the year</li>
+        <li>Long-term Trends: Changes in dietary habits and production methods influence prices over years</li>
+        <li>Packaging: Different packaging types can affect pricing strategies</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Tips for Understanding Avocado Prices</h3>
+    <ul>
+        <li>Monitor seasonal trends to anticipate price fluctuations</li>
+        <li>Consider regional differences in supply and demand</li>
+        <li>Pay attention to the difference between organic and conventional avocados</li>
+        <li>Understand how different sizes and packaging options affect pricing</li>
+        <li>Keep an eye on long-term trends in avocado consumption and production</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+with tab2:
+    st.header("📊 Data Analysis")
     
     # Dataset Explorer
     st.subheader("Dataset Explorer")
     st.dataframe(data.head())
     
-    # Column Explanations
-    st.subheader("Column Explanations")
-    for col, explanation in column_explanations.items():
-        st.write(f"**{col}**: {explanation}")
-    
     # Descriptive Statistics
     st.subheader("Descriptive Statistics")
     st.dataframe(data.describe())
     
-    # Univariate Analysis
-    st.subheader("Univariate Analysis")
+    # Feature Distribution
+    st.subheader("Feature Distribution")
     numeric_columns = data.select_dtypes(include=[np.number]).columns
-    feature_univariate = st.selectbox("Select a feature for univariate analysis", numeric_columns)
-    fig_univariate = px.histogram(data, x=feature_univariate, marginal="box")
-    st.plotly_chart(fig_univariate)
+    feature = st.selectbox("Select a feature to visualize:", numeric_columns)
+    fig_dist = px.histogram(data, x=feature, marginal="box", hover_data=data.columns)
+    st.plotly_chart(fig_dist, use_container_width=True)
     
-    # Bivariate Analysis
-    st.subheader("Bivariate Analysis")
-    feature_bivariate = st.selectbox("Select a feature for bivariate analysis with Average Price", 
-                                     [col for col in numeric_columns if col != 'AveragePrice'])
-    fig_bivariate = px.scatter(data, x=feature_bivariate, y='AveragePrice', color="type", hover_data=['region'])
-    st.plotly_chart(fig_bivariate)
+    # Scatter Plot
+    st.subheader("Scatter Plot")
+    x_axis = st.selectbox("Select X-axis:", numeric_columns, index=0)
+    y_axis = st.selectbox("Select Y-axis:", numeric_columns, index=min(1, len(numeric_columns) - 1))
+    color_by = st.selectbox("Color by:", data.columns, index=min(2, len(data.columns) - 1))
+    fig_scatter = px.scatter(data, x=x_axis, y=y_axis, color=color_by, hover_data=data.columns)
+    st.plotly_chart(fig_scatter, use_container_width=True)
     
     # Correlation Heatmap
     st.subheader("Correlation Heatmap")
     corr = data[numeric_columns].corr()
     fig_corr = px.imshow(corr, color_continuous_scale='RdBu_r', aspect="auto")
-    st.plotly_chart(fig_corr)
+    st.plotly_chart(fig_corr, use_container_width=True)
     
-    # Crosstab Analysis
-    st.subheader("Crosstab Analysis")
-    categorical_columns = ['type', 'region']
-    cat_col1, cat_col2 = st.columns(2)
-    with cat_col1:
-        cat_feature1 = st.selectbox("Select first categorical feature", categorical_columns)
-    with cat_col2:
-        cat_feature2 = st.selectbox("Select second categorical feature", 
-                                    [col for col in categorical_columns if col != cat_feature1])
-    crosstab = pd.crosstab(data[cat_feature1], data[cat_feature2])
-    st.write(crosstab)
-    fig_crosstab = px.bar(crosstab, barmode='group')
-    st.plotly_chart(fig_crosstab)
-    
-    # Word Cloud
-    st.subheader("Word Cloud of Regions")
-    text = ' '.join(original_data['region'])
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
-    fig_wordcloud, ax = plt.subplots()
-    ax.imshow(wordcloud, interpolation='bilinear')
-    ax.axis('off')
-    st.pyplot(fig_wordcloud)
+    # Time Series Plot
+    st.subheader("Time Series Plot")
+    fig_time = px.line(data, x='Date', y='AveragePrice', color='type')
+    st.plotly_chart(fig_time, use_container_width=True)
 
-with tab2:
-    st.header("Model Performance")
+with tab3:
+    st.header("🧮 Model Performance")
+    
     col1, col2 = st.columns(2)
     
     with col1:
@@ -209,7 +214,7 @@ with tab2:
         fig.add_trace(go.Scatter(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], 
                                  mode='lines', name='Ideal'))
         fig.update_layout(xaxis_title="Actual Average Price", yaxis_title="Predicted Average Price")
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
         
     with col2:
         st.subheader("Model Performance Metrics")
@@ -221,81 +226,24 @@ with tab2:
         }
         for metric, value in metrics.items():
             st.metric(metric, f"{value:.4f}")
-        
-    if algorithm in ["Decision Tree", "Random Forest"]:
-        st.subheader("Feature Importance")
-        importances = model.feature_importances_
-        feature_imp = pd.DataFrame({'feature': X.columns, 'importance': importances})
-        feature_imp = feature_imp.sort_values('importance', ascending=False).reset_index(drop=True)
-        fig = px.bar(feature_imp, x='importance', y='feature', orientation='h')
-        st.plotly_chart(fig)
-
-with tab3:
-    st.header("Model Explanation")
     
-    if algorithm == "Linear Regression":
-        st.write("""
-        Linear Regression finds the best linear relationship between the input features and the target variable (Average Price).
-        It assumes that the price can be predicted as a weighted sum of the input features.
-
-        The equation is: Average Price = w1*x1 + w2*x2 + ... + wn*xn + b
-
-        Where w1, w2, ..., wn are the weights for each feature, x1, x2, ..., xn are the feature values, and b is the bias term.
-        """)
-
-    elif algorithm == "Ridge Regression":
-        st.write("""
-        Ridge Regression is similar to Linear Regression but adds a penalty term to prevent overfitting.
-        It's useful when there might be high correlations between input features.
-
-        The objective is to minimize: ||y - Xw||² + α||w||²
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Lasso Regression":
-        st.write("""
-        Lasso Regression also adds a penalty term, but it can completely eliminate the impact of less important features.
-        This makes it useful for feature selection.
-
-        The objective is to minimize: ||y - Xw||² + α||w||₁
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Decision Tree":
-        st.write("""
-        Decision Tree creates a tree-like model of decisions based on the input features.
-        It splits the data based on different conditions to make predictions.
-
-        For example: If (Total Volume > 1000000) and (year > 2016), then predict high price.
-
-        The tree is created by minimizing impurity (often measured by mean squared error for regression) at each split.
-        """)
-
-    elif algorithm == "Random Forest":
-        st.write("""
-        Random Forest is an ensemble of Decision Trees. It creates multiple trees and aggregates their predictions.
-        This helps to reduce overfitting and improve generalization.
-
-        The final prediction is typically the average of all individual tree predictions:
-        Prediction = (Tree1 + Tree2 + ... + TreeN) / N
-
-        Where N is the number of trees in the forest.
-        """)
-
-    elif algorithm == "Support Vector Regression":
-        st.write("""
-        Support Vector Regression tries to find a function that deviates from y by a value no greater than ε for each training point x.
-
-        It aims to solve:
-        minimize 1/2 ||w||² subject to |y - f(x)| ≤ ε
-
-        Where f(x) is the prediction function and ε is the maximum allowed deviation.
-        """)
+    if algorithm in ["Linear Regression", "Ridge Regression", "Lasso Regression"]:
+        st.subheader("Feature Coefficients")
+        coeffs = pd.DataFrame({'feature': X.columns, 'coefficient': model.coef_})
+        coeffs = coeffs.sort_values('coefficient', key=abs, ascending=False).reset_index(drop=True)
+        fig_coeffs = px.bar(coeffs, x='coefficient', y='feature', orientation='h')
+        st.plotly_chart(fig_coeffs, use_container_width=True)
+    
+    elif algorithm in ["Decision Tree", "Random Forest"]:
+        st.subheader("Feature Importance")
+        importances = pd.DataFrame({'feature': X.columns, 'importance': model.feature_importances_})
+        importances = importances.sort_values('importance', ascending=False).reset_index(drop=True)
+        fig_importance = px.bar(importances, x='importance', y='feature', orientation='h')
+        st.plotly_chart(fig_importance, use_container_width=True)
 
 with tab4:
-    st.header("Make a Prediction")
+    st.header("🔮 Make a Prediction")
+    
     col1, col2 = st.columns(2)
     
     with col1:
@@ -304,9 +252,9 @@ with tab4:
         year = st.number_input("Year", min_value=data['year'].min(), max_value=data['year'].max(), value=2018)
         total_volume = st.number_input("Total Volume", min_value=0, value=100000)
         plu4046 = st.number_input("PLU4046 (Small/Medium Hass)", min_value=0, value=1000)
-        plu4225 = st.number_input("PLU4225 (Large Hass)", min_value=0, value=1000)
     
     with col2:
+        plu4225 = st.number_input("PLU4225 (Large Hass)", min_value=0, value=1000)
         plu4770 = st.number_input("PLU4770 (Extra Large Hass)", min_value=0, value=1000)
         total_bags = st.number_input("Total Bags", min_value=0, value=1000)
         small_bags = st.number_input("Small Bags", min_value=0, value=500)
@@ -318,11 +266,9 @@ with tab4:
     day_of_week = current_date.dayofweek
     month = current_date.month
 
-    if st.button("🥑 Predict Price", key="predict_button"):
-        # Create a DataFrame with all features, initialized with zeros
+    if st.button("🥑 Predict Price"):
         input_data = pd.DataFrame(0, index=[0], columns=X.columns)
         
-        # Fill in the values for the features we have
         input_data['type'] = pd.Categorical(original_data['type']).codes[list(original_data['type'].unique()).index(avocado_type)]
         input_data['region'] = pd.Categorical(original_data['region']).codes[list(original_data['region'].unique()).index(region)]
         input_data['year'] = year
@@ -337,38 +283,106 @@ with tab4:
         input_data['DayOfWeek'] = day_of_week
         input_data['Month'] = month
         
-        # Impute any missing values in the input data
         input_data = pd.DataFrame(imputer.transform(input_data), columns=input_data.columns)
         
         input_scaled = scaler.transform(input_data)
         prediction = model.predict(input_scaled)
         st.success(f"Predicted Average Price: ${prediction[0]:.2f}")
+        
+        # Radar chart for input features
+        features = ['Total Volume', 'PLU4046', 'PLU4225', 'PLU4770', 'Total Bags', 'Small Bags', 'Large Bags', 'XLarge Bags']
+        values = input_data[features].values[0].tolist()
+        
+        fig = go.Figure(data=go.Scatterpolar(
+          r=values,
+          theta=features,
+          fill='toself'
+        ))
 
-# Run the Streamlit app
-if __name__ == "__main__":
-    st.sidebar.info("This app predicts avocado prices based on various features.")
+        fig.update_layout(
+          polar=dict(
+            radialaxis=dict(
+              visible=True,
+              range=[0, max(values)]
+            )),
+          showlegend=False
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
 
-    # Add some additional information or insights
-    st.sidebar.subheader("Did you know?")
-    st.sidebar.write("Avocado consumption in the US has increased significantly over the past decade.")
-    st.sidebar.write("Factors like weather, seasonality, and supply chain issues can affect avocado prices.")
+with tab5:
+    st.header("🧠 Test Your Knowledge")
+    
+    questions = [
+        {
+            "question": "Which of these factors is NOT typically considered in avocado price prediction?",
+            "options": [
+                "Total Volume",
+                "Region",
+                "Customer Age",
+                "Avocado Type (Conventional/Organic)"
+            ],
+            "correct": 2,
+            "explanation": "Customer Age is not typically considered in avocado price prediction. The focus is more on supply, demand, and product characteristics."
+        },
+        {
+            "question": "What does PLU stand for in the context of avocado sales?",
+            "options": [
+                "Price Look-Up",
+                "Produce Listing Unit",
+                "Package Label Unit",
+                "Product Line Usage"
+            ],
+            "correct": 0,
+            "explanation": "PLU stands for Price Look-Up. It's a code used to identify and price produce items."
+        },
+        {
+            "question": "Which of these is likely to have a strong influence on avocado prices?",
+            "options": [
+                "The color of the store's walls",
+                "The day of the week",
+                "Total Volume of avocados sold",
+                "The store manager's favorite fruit"
+            ],
+            "correct": 2,
+            "explanation": "Total Volume of avocados sold typically has a strong influence on prices. It's a direct measure of supply and demand."
+        }
+    ]
+    
+    for i, q in enumerate(questions):
+        st.subheader(f"Question {i+1}: {q['question']}")
+        user_answer = st.radio(f"Select your answer for Question {i+1}:", q['options'], key=f"q{i}")
+        
+        if st.button(f"Check Answer for Question {i+1}", key=f"check{i}"):
+            if q['options'].index(user_answer) == q['correct']:
+                st.success("Correct! Well done!")
+            else:
+                st.error("Not quite right. Let's learn from this!")
+            st.info(f"Explanation: {q['explanation']}")
+        st.write("---")
 
-    # Add a footer
-    st.markdown("""
-    <style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #0E1117;
-        color: #FAFAFA;
-        text-align: center;
-        padding: 10px;
-        font-size: 12px;
-    }
-    </style>
-    <div class="footer">
-        Developed by Venugopal Adep | Data source: https://www.kaggle.com/datasets/neuromusic/avocado-prices
-    </div>
-    """, unsafe_allow_html=True)
+st.sidebar.markdown("---")
+st.sidebar.info("This app demonstrates the factors influencing avocado prices. Adjust the parameters and explore the different tabs to learn more!")
+
+# Footer
+st.markdown("""
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0E1117;
+    color: #FAFAFA;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}
+</style>
+<div class="footer">
+    Developed by Venugopal Adep | Data source: Avocado Prices Dataset
+</div>
+""", unsafe_allow_html=True)
+
+# Add some spacing at the bottom to prevent content from being hidden by the footer
+st.write("<br><br><br>", unsafe_allow_html=True)
