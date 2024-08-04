@@ -62,6 +62,14 @@ def load_data():
 
 data = load_data()
 
+if data is None or data.empty:
+    st.error("Failed to load the dataset. Please check the data source.")
+    st.stop()
+
+# Print data info for debugging
+st.write("Dataset Info:")
+st.write(data.info())
+
 # Prepare the data
 @st.cache_data
 def prepare_data(data):
@@ -170,8 +178,8 @@ with tab2:
     # Scatter Plot
     st.subheader("Scatter Plot")
     x_axis = st.selectbox("Select X-axis:", data.columns, index=0)
-    y_axis = st.selectbox("Select Y-axis:", data.columns, index=-1)
-    color_by = st.selectbox("Color by:", data.columns)
+    y_axis = st.selectbox("Select Y-axis:", data.columns, index=min(1, len(data.columns) - 1))
+    color_by = st.selectbox("Color by:", data.columns, index=min(2, len(data.columns) - 1))
     fig_scatter = px.scatter(data, x=x_axis, y=y_axis, color=color_by, hover_data=data.columns)
     st.plotly_chart(fig_scatter, use_container_width=True)
 
