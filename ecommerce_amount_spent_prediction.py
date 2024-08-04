@@ -10,7 +10,6 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import SVR
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-import io
 
 # Set page config
 st.set_page_config(page_title="E-commerce Customer Spending Predictor", layout="wide", page_icon="🛒")
@@ -79,7 +78,6 @@ algorithm = st.sidebar.selectbox(
 
 # Main content
 st.title("E-commerce Customer Spending Predictor")
-st.write('**Developed by : Venugopal Adep**')
 st.write("Predict yearly spending of e-commerce customers based on their behavior.")
 
 # Prepare the data
@@ -105,9 +103,42 @@ model.fit(X_train_scaled, y_train)
 y_pred = model.predict(X_test_scaled)
 
 # Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["📊 Data Analysis", "🧮 Model Performance", "📘 Model Explanation", "🔮 Prediction"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📚 Learn", "📊 Data Analysis", "🧮 Model Performance", "🔮 Prediction", "🧠 Quiz"])
 
 with tab1:
+    st.header("Understanding E-commerce Customer Spending Prediction")
+    
+    st.subheader("What is E-commerce Customer Spending Prediction?")
+    st.write("""
+    E-commerce customer spending prediction is a technique used to estimate how much a customer is likely to spend on an online platform based on various factors such as their behavior, engagement, and historical data.
+    """)
+    
+    st.subheader("Why is it important?")
+    st.write("""
+    1. **Personalized Marketing**: Tailor marketing strategies to different customer segments.
+    2. **Inventory Management**: Anticipate demand and manage stock levels effectively.
+    3. **Customer Retention**: Identify high-value customers and implement retention strategies.
+    4. **Revenue Forecasting**: Make more accurate business projections and financial plans.
+    """)
+    
+    st.subheader("Key Factors in Predicting Customer Spending")
+    st.write("""
+    - **Avg. Session Length**: Longer sessions may indicate higher engagement and potential spending.
+    - **Time on App**: More time spent on the app could lead to more purchases.
+    - **Time on Website**: Similar to app usage, website engagement can influence spending.
+    - **Length of Membership**: Long-term customers might have different spending patterns.
+    """)
+    
+    st.subheader("How Machine Learning Helps")
+    st.write("""
+    Machine learning algorithms can:
+    1. Identify complex patterns in customer behavior.
+    2. Handle large amounts of data efficiently.
+    3. Continuously improve predictions as new data becomes available.
+    4. Provide insights into which factors most influence customer spending.
+    """)
+
+with tab2:
     st.header("Data Analysis")
     
     # Dataset Explorer
@@ -142,7 +173,7 @@ with tab1:
     fig_corr = px.imshow(corr, color_continuous_scale='RdBu_r', aspect="auto")
     st.plotly_chart(fig_corr)
 
-with tab2:
+with tab3:
     st.header("Model Performance")
     col1, col2 = st.columns(2)
     
@@ -174,70 +205,6 @@ with tab2:
         fig = px.bar(feature_imp, x='importance', y='feature', orientation='h')
         st.plotly_chart(fig)
 
-with tab3:
-    st.header("Model Explanation")
-    
-    if algorithm == "Linear Regression":
-        st.write("""
-        Linear Regression finds the best linear relationship between the input features and the target variable (Yearly Amount Spent).
-        It assumes that the spending can be predicted as a weighted sum of the input features.
-
-        Example: Yearly Amount Spent = w1 * (Avg. Session Length) + w2 * (Time on App) + w3 * (Time on Website) + w4 * (Length of Membership) + b
-
-        Where w1, w2, w3, w4 are weights and b is the bias term.
-        """)
-
-    elif algorithm == "Ridge Regression":
-        st.write("""
-        Ridge Regression is similar to Linear Regression but adds a penalty term to prevent overfitting.
-        It's useful when there might be high correlations between input features.
-
-        The objective is to minimize: ||y - Xw||² + α||w||²
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Lasso Regression":
-        st.write("""
-        Lasso Regression also adds a penalty term, but it can completely eliminate the impact of less important features.
-        This makes it useful for feature selection.
-
-        The objective is to minimize: ||y - Xw||² + α||w||₁
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Decision Tree":
-        st.write("""
-        Decision Tree creates a tree-like model of decisions based on the input features.
-        It splits the data based on different conditions to make predictions.
-
-        Example: If (Time on App > 10) and (Length of Membership > 2), then predict high spending.
-
-        The tree is created by minimizing impurity (often measured by Gini impurity or entropy) at each split.
-        """)
-
-    elif algorithm == "Random Forest":
-        st.write("""
-        Random Forest is an ensemble of Decision Trees. It creates multiple trees and aggregates their predictions.
-        This helps to reduce overfitting and improve generalization.
-
-        The final prediction is typically the average of all individual tree predictions:
-        Prediction = (Tree1 + Tree2 + ... + TreeN) / N
-
-        Where N is the number of trees in the forest.
-        """)
-
-    elif algorithm == "Support Vector Regression":
-        st.write("""
-        Support Vector Regression tries to find a function that deviates from y by a value no greater than ε for each training point x.
-
-        It aims to solve:
-        minimize 1/2 ||w||² subject to |y - f(x)| ≤ ε
-
-        Where f(x) is the prediction function and ε is the maximum allowed deviation.
-        """)
-
 with tab4:
     st.header("Make a Prediction")
     col1, col2 = st.columns(2)
@@ -250,7 +217,7 @@ with tab4:
         time_on_website = st.slider("Time on Website (minutes)", min_value=0.0, max_value=45.0, value=35.0)
         length_of_membership = st.slider("Length of Membership (years)", min_value=0.0, max_value=6.0, value=3.0)
 
-    if st.button("💰 Predict Yearly Spending", key="predict_button"):
+    if st.button("💰 Predict Yearly Spending"):
         input_data = pd.DataFrame({
             'Avg. Session Length': [avg_session_length],
             'Time on App': [time_on_app],
@@ -261,22 +228,52 @@ with tab4:
         prediction = model.predict(input_scaled)
         st.success(f"Predicted Yearly Spending: ${prediction[0]:,.2f}")
 
-    # Add a footer
-    st.markdown("""
-    <style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #0E1117;
-        color: #FAFAFA;
-        text-align: center;
-        padding: 10px;
-        font-size: 12px;
-    }
-    </style>
-    <div class="footer">
-        Developed by Venugopal Adep | Data source: https://www.kaggle.com/datasets/kolawale/focusing-on-mobile-app-or-website
-    </div>
-    """, unsafe_allow_html=True)
+with tab5:
+    st.header("Test Your Knowledge")
+    
+    questions = [
+        {
+            "question": "What is the main goal of e-commerce customer spending prediction?",
+            "options": ["To increase website traffic", "To estimate how much a customer is likely to spend", "To design new products"],
+            "correct": 1
+        },
+        {
+            "question": "Which of the following is NOT a key factor in predicting customer spending in this model?",
+            "options": ["Average Session Length", "Time on App", "Customer's Age", "Length of Membership"],
+            "correct": 2
+        },
+        {
+            "question": "Why is customer spending prediction important for e-commerce businesses?",
+            "options": ["It helps in personalizing marketing strategies", "It's not important for e-commerce", "It directly increases sales"],
+            "correct": 0
+        }
+    ]
+    
+    for i, q in enumerate(questions):
+        st.subheader(f"Question {i+1}")
+        user_answer = st.radio(q["question"], q["options"])
+        if st.button(f"Check Answer {i+1}"):
+            if q["options"].index(user_answer) == q["correct"]:
+                st.success("Correct!")
+            else:
+                st.error(f"Incorrect. The correct answer is: {q['options'][q['correct']]}")
+
+# Add a footer
+st.markdown("""
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0E1117;
+    color: #FAFAFA;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}
+</style>
+<div class="footer">
+    Developed by Your Name | Data source: Your Data Source
+</div>
+""", unsafe_allow_html=True)
