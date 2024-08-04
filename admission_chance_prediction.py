@@ -51,7 +51,7 @@ st.markdown("""
 
 # Title and description
 st.title("🎓 Graduate Admission Predictor")
-st.markdown("**Developed by: Your Name**")
+st.markdown("**Developed by: Venugopal Adep**")
 st.markdown("Explore factors influencing graduate admission chances!")
 
 # Load the data
