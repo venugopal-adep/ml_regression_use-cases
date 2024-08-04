@@ -10,42 +10,49 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import SVR
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-import io
 
 # Set page config
-st.set_page_config(page_title="BigMart Sales Predictor", layout="wide", page_icon="🛒")
+st.set_page_config(page_title="BigMart Sales Predictor", layout="wide", initial_sidebar_state="expanded")
 
-# Custom CSS
+# Custom CSS for better appearance
 st.markdown("""
-    <style>
-    .main {
-        background-color: #f0f2f6;
-    }
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
-        background-color: #4e8df5;
-        border-radius: 4px 4px 0px 0px;
-        gap: 1px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #0c43a3;
-    }
-    .stMarkdown {
-        text-align: left;
-    }
-    .stButton>button {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-    }
-    </style>
+<style>
+.stApp {
+    background-color: #f0f8ff;
+}
+.stButton>button {
+    background-color: #4CAF50;
+    color: white;
+}
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2px;
+}
+.stTabs [data-baseweb="tab"] {
+    height: 50px;
+    white-space: pre-wrap;
+    background-color: #e6e6fa;
+    border-radius: 4px 4px 0 0;
+    gap: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.stTabs [aria-selected="true"] {
+    background-color: #4CAF50;
+    color: white;
+}
+.highlight {
+    background-color: #e6e6fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+</style>
 """, unsafe_allow_html=True)
+
+# Title and description
+st.title("🛒 BigMart Sales Predictor")
+st.markdown("**Developed by: Venugopal Adep**")
+st.markdown("Explore factors influencing product sales in BigMart stores!")
 
 # Load the data
 @st.cache_data
@@ -54,37 +61,6 @@ def load_data():
     return data
 
 data = load_data()
-
-# Column explanations
-column_explanations = {
-    "Item_Identifier": "Unique product ID",
-    "Item_Fat_Content": "Whether the product is low fat or regular",
-    "Item_Type": "The category to which the product belongs",
-    "Outlet_Identifier": "Unique store ID",
-    "Outlet_Type": "The size of the store in terms of ground area covered",
-    "Outlet_Size": "The type of city in which the store is located",
-    "Outlet_Location_Type": "The type of outlet (grocery store or supermarket)",
-    "Item_Weight": "Weight of product",
-    "Item_Visibility": "The percentage of total display area of all products in a store allocated to the particular product",
-    "Item_MRP": "Maximum Retail Price (list price) of the product",
-    "Outlet_Establishment_Year": "The year in which store was established",
-    "Item_Outlet_Sales": "Sales of the product in the particular store (Target Variable)"
-}
-
-# Sidebar
-st.sidebar.title("🛒 BigMart Sales Predictor")
-
-# Algorithm selection
-algorithm = st.sidebar.selectbox(
-    "Select Regression Algorithm",
-    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
-     "Decision Tree", "Random Forest", "Support Vector Regression"]
-)
-
-# Main content
-st.title("BigMart Sales Predictor")
-st.write('**Developed by : Venugopal Adep**')
-st.write("Predict sales of products in different outlets based on various features.")
 
 # Prepare the data
 @st.cache_data
@@ -106,6 +82,14 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
+# Sidebar
+st.sidebar.header("Parameters")
+algorithm = st.sidebar.selectbox(
+    "Select Regression Algorithm",
+    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
+     "Decision Tree", "Random Forest", "Support Vector Regression"]
+)
+
 # Model training and prediction
 models = {
     "Linear Regression": LinearRegression(),
@@ -120,48 +104,90 @@ model = models[algorithm]
 model.fit(X_train_scaled, y_train)
 y_pred = model.predict(X_test_scaled)
 
-# Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["📊 Data Analysis", "🧮 Model Performance", "📘 Model Explanation", "🔮 Prediction"])
+# Main content
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📚 Learn", "📊 Data Analysis", "🧮 Model Performance", "🔮 Predictions", "🧠 Quiz"])
 
 with tab1:
-    st.header("Data Analysis")
+    st.header("📚 Learn About BigMart Sales")
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Key Factors in BigMart Sales</h3>
+    <ul>
+        <li>Item Weight: Weight of the product</li>
+        <li>Item Fat Content: Whether the product is low fat or regular</li>
+        <li>Item Visibility: The percentage of total display area of all products in a store allocated to the particular product</li>
+        <li>Item Type: The category to which the product belongs</li>
+        <li>Item MRP: Maximum Retail Price (list price) of the product</li>
+        <li>Outlet Establishment Year: The year in which store was established</li>
+        <li>Outlet Size: The size of the store in terms of ground area covered</li>
+        <li>Outlet Location Type: The type of city in which the store is located</li>
+        <li>Outlet Type: Whether the outlet is just a grocery store or some sort of supermarket</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Why These Factors Matter</h3>
+    <ul>
+        <li>Product Characteristics: Weight, fat content, and type can influence consumer preferences</li>
+        <li>Pricing: MRP is a crucial factor in determining sales</li>
+        <li>Store Features: Size, location, and type of outlet can affect customer footfall and sales</li>
+        <li>Visibility: Higher visibility can lead to more sales</li>
+        <li>Establishment Year: Older stores might have a loyal customer base</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Tips for Improving Sales</h3>
+    <ul>
+        <li>Optimize product placement to increase visibility</li>
+        <li>Tailor product offerings based on outlet location and type</li>
+        <li>Consider promotional strategies for items with higher MRP</li>
+        <li>Analyze the performance of different product types and adjust inventory accordingly</li>
+        <li>Leverage the strengths of each outlet type (e.g., convenience of grocery stores vs. variety in supermarkets)</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+with tab2:
+    st.header("📊 Data Analysis")
     
     # Dataset Explorer
     st.subheader("Dataset Explorer")
-    columns_to_show = st.multiselect("Select columns to display", list(data.columns), default=list(data.columns[:5]))
-    st.dataframe(data[columns_to_show])
-    
-    # Column Explanations
-    st.subheader("Column Explanations")
-    for col, explanation in column_explanations.items():
-        st.write(f"**{col}**: {explanation}")
+    st.dataframe(data)
     
     # Descriptive Statistics
     st.subheader("Descriptive Statistics")
     st.dataframe(data.describe())
     
-    # Univariate Analysis
-    st.subheader("Univariate Analysis")
-    numeric_columns = data.select_dtypes(include=[np.number]).columns
-    feature_univariate = st.selectbox("Select a feature for univariate analysis", numeric_columns)
-    fig_univariate = px.histogram(data, x=feature_univariate, marginal="box")
-    st.plotly_chart(fig_univariate)
-    
-    # Bivariate Analysis
-    st.subheader("Bivariate Analysis")
-    feature_bivariate = st.selectbox("Select a feature for bivariate analysis with Item_Outlet_Sales", 
-                                     [col for col in numeric_columns if col != 'Item_Outlet_Sales'])
-    fig_bivariate = px.scatter(data, x=feature_bivariate, y='Item_Outlet_Sales', color="Item_Type", hover_data=['Item_Identifier'])
-    st.plotly_chart(fig_bivariate)
-    
     # Correlation Heatmap
     st.subheader("Correlation Heatmap")
+    numeric_columns = data.select_dtypes(include=[np.number]).columns
     corr = data[numeric_columns].corr()
     fig_corr = px.imshow(corr, color_continuous_scale='RdBu_r', aspect="auto")
-    st.plotly_chart(fig_corr)
+    st.plotly_chart(fig_corr, use_container_width=True)
+    
+    # Feature Distribution
+    st.subheader("Feature Distribution")
+    feature = st.selectbox("Select a feature to visualize:", numeric_columns)
+    fig_dist = px.histogram(data, x=feature, marginal="box", hover_data=data.columns)
+    st.plotly_chart(fig_dist, use_container_width=True)
+    
+    # Scatter Plot
+    st.subheader("Scatter Plot")
+    x_axis = st.selectbox("Select X-axis:", numeric_columns, index=0)
+    y_axis = st.selectbox("Select Y-axis:", numeric_columns, index=min(1, len(numeric_columns) - 1))
+    color_by = st.selectbox("Color by:", data.columns, index=min(2, len(data.columns) - 1))
+    fig_scatter = px.scatter(data, x=x_axis, y=y_axis, color=color_by, hover_data=data.columns)
+    st.plotly_chart(fig_scatter, use_container_width=True)
 
-with tab2:
-    st.header("Model Performance")
+with tab3:
+    st.header("🧮 Model Performance")
+    
     col1, col2 = st.columns(2)
     
     with col1:
@@ -171,7 +197,7 @@ with tab2:
         fig.add_trace(go.Scatter(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], 
                                  mode='lines', name='Ideal'))
         fig.update_layout(xaxis_title="Actual Sales", yaxis_title="Predicted Sales")
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
         
     with col2:
         st.subheader("Model Performance Metrics")
@@ -182,88 +208,32 @@ with tab2:
             "R2 Score": r2_score(y_test, y_pred)
         }
         for metric, value in metrics.items():
-            st.metric(metric, f"{value:.2f}")
-        
-    if algorithm in ["Decision Tree", "Random Forest"]:
-        st.subheader("Feature Importance")
-        importances = model.feature_importances_
-        feature_imp = pd.DataFrame({'feature': X.columns, 'importance': importances})
-        feature_imp = feature_imp.sort_values('importance', ascending=False).reset_index(drop=True)
-        fig = px.bar(feature_imp, x='importance', y='feature', orientation='h')
-        st.plotly_chart(fig)
-
-with tab3:
-    st.header("Model Explanation")
+            st.metric(metric, f"{value:.4f}")
     
-    if algorithm == "Linear Regression":
-        st.write("""
-        Linear Regression finds the best linear relationship between the input features and the target variable (Item_Outlet_Sales).
-        It assumes that the sales can be predicted as a weighted sum of the input features.
-
-        The equation is: Item_Outlet_Sales = w1*x1 + w2*x2 + ... + wn*xn + b
-
-        Where w1, w2, ..., wn are the weights for each feature, x1, x2, ..., xn are the feature values, and b is the bias term.
-        """)
-
-    elif algorithm == "Ridge Regression":
-        st.write("""
-        Ridge Regression is similar to Linear Regression but adds a penalty term to prevent overfitting.
-        It's useful when there might be high correlations between input features.
-
-        The objective is to minimize: ||y - Xw||² + α||w||²
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Lasso Regression":
-        st.write("""
-        Lasso Regression also adds a penalty term, but it can completely eliminate the impact of less important features.
-        This makes it useful for feature selection.
-
-        The objective is to minimize: ||y - Xw||² + α||w||₁
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Decision Tree":
-        st.write("""
-        Decision Tree creates a tree-like model of decisions based on the input features.
-        It splits the data based on different conditions to make predictions.
-
-        For example: If (Item_MRP > 100) and (Outlet_Type = Supermarket Type1), then predict high sales.
-
-        The tree is created by minimizing impurity (often measured by mean squared error for regression) at each split.
-        """)
-
-    elif algorithm == "Random Forest":
-        st.write("""
-        Random Forest is an ensemble of Decision Trees. It creates multiple trees and aggregates their predictions.
-        This helps to reduce overfitting and improve generalization.
-
-        The final prediction is typically the average of all individual tree predictions:
-        Prediction = (Tree1 + Tree2 + ... + TreeN) / N
-
-        Where N is the number of trees in the forest.
-        """)
-
-    elif algorithm == "Support Vector Regression":
-        st.write("""
-        Support Vector Regression tries to find a function that deviates from y by a value no greater than ε for each training point x.
-
-        It aims to solve:
-        minimize 1/2 ||w||² subject to |y - f(x)| ≤ ε
-
-        Where f(x) is the prediction function and ε is the maximum allowed deviation.
-        """)
+    if algorithm in ["Linear Regression", "Ridge Regression", "Lasso Regression"]:
+        st.subheader("Feature Coefficients")
+        coeffs = pd.DataFrame({'feature': X.columns, 'coefficient': model.coef_})
+        coeffs = coeffs.sort_values('coefficient', key=abs, ascending=False).reset_index(drop=True)
+        fig_coeffs = px.bar(coeffs, x='coefficient', y='feature', orientation='h')
+        st.plotly_chart(fig_coeffs, use_container_width=True)
+    
+    elif algorithm in ["Decision Tree", "Random Forest"]:
+        st.subheader("Feature Importance")
+        importances = pd.DataFrame({'feature': X.columns, 'importance': model.feature_importances_})
+        importances = importances.sort_values('importance', ascending=False).reset_index(drop=True)
+        fig_importance = px.bar(importances, x='importance', y='feature', orientation='h')
+        st.plotly_chart(fig_importance, use_container_width=True)
 
 with tab4:
-    st.header("Make a Prediction")
+    st.header("🔮 Make a Prediction")
+    
     col1, col2 = st.columns(2)
     
     with col1:
-        item_weight = st.number_input("Item Weight", min_value=0.0, max_value=50.0, value=10.0)
-        item_visibility = st.number_input("Item Visibility", min_value=0.0, max_value=1.0, value=0.1)
-        item_mrp = st.number_input("Item MRP", min_value=0.0, max_value=300.0, value=100.0)
+        item_weight = st.slider("Item Weight", 0.0, 50.0, 10.0, 0.1)
+        item_visibility = st.slider("Item Visibility", 0.0, 0.3, 0.1, 0.01)
+        item_mrp = st.slider("Item MRP", 0.0, 300.0, 100.0, 1.0)
+        outlet_establishment_year = st.slider("Outlet Establishment Year", 1950, 2022, 1990)
     
     with col2:
         item_fat_content = st.selectbox("Item Fat Content", ["Low Fat", "Regular"])
@@ -272,18 +242,14 @@ with tab4:
         outlet_type = st.selectbox("Outlet Type", data['Outlet_Type'].unique())
         item_type = st.selectbox("Item Type", data['Item_Type'].unique())
 
-    if st.button("🛒 Predict Sales", key="predict_button"):
-        # Create a DataFrame with all features, initialized with zeros
+    if st.button("🛒 Predict Sales"):
         input_data = pd.DataFrame(0, index=[0], columns=X.columns)
         
-        # Fill in the values for the features we have
         input_data['Item_Weight'] = item_weight
         input_data['Item_Visibility'] = item_visibility
         input_data['Item_MRP'] = item_mrp
+        input_data['Outlet_Establishment_Year'] = outlet_establishment_year
         input_data['Item_Fat_Content'] = 0 if item_fat_content == "Low Fat" else 1
-        input_data['Outlet_Establishment_Year'] = 2022  # Assuming current year
-        
-        # One-hot encode categorical variables
         input_data[f'Outlet_Size_{outlet_size}'] = 1
         input_data[f'Outlet_Location_Type_{outlet_location_type}'] = 1
         input_data[f'Outlet_Type_{outlet_type}'] = 1
@@ -291,24 +257,102 @@ with tab4:
         
         input_scaled = scaler.transform(input_data)
         prediction = model.predict(input_scaled)
-        st.success(f"Predicted Item Outlet Sales: ${prediction[0]:,.2f}")
+        st.success(f"Predicted Sales: ${prediction[0]:.2f}")
+        
+        # Radar chart for input features
+        features = ['Item_Weight', 'Item_Visibility', 'Item_MRP', 'Outlet_Establishment_Year']
+        values = [item_weight, item_visibility, item_mrp, outlet_establishment_year]
+        
+        fig = go.Figure(data=go.Scatterpolar(
+          r=values,
+          theta=features,
+          fill='toself'
+        ))
 
-    # Add a footer
-    st.markdown("""
-    <style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #0E1117;
-        color: #FAFAFA;
-        text-align: center;
-        padding: 10px;
-        font-size: 12px;
-    }
-    </style>
-    <div class="footer">
-        Developed by Venugopal Adep | Data source: https://www.kaggle.com/datasets/uniabhi/bigmart-sales-data
-    </div>
-    """, unsafe_allow_html=True)
+        fig.update_layout(
+          polar=dict(
+            radialaxis=dict(
+              visible=True,
+              range=[0, max(values)]
+            )),
+          showlegend=False
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
+
+with tab5:
+    st.header("🧠 Test Your Knowledge")
+    
+    questions = [
+        {
+            "question": "Which of these factors is NOT typically considered in BigMart sales prediction?",
+            "options": [
+                "Item Weight",
+                "Item Visibility",
+                "Customer Age",
+                "Outlet Type"
+            ],
+            "correct": 2,
+            "explanation": "Customer Age is not typically considered in BigMart sales prediction. The focus is more on product characteristics and store features."
+        },
+        {
+            "question": "What does MRP stand for in the context of BigMart sales?",
+            "options": [
+                "Most Recent Price",
+                "Maximum Retail Price",
+                "Minimum Required Profit",
+                "Market Rate Price"
+            ],
+            "correct": 1,
+            "explanation": "MRP stands for Maximum Retail Price. It's the list price of the product and a crucial factor in determining sales."
+        },
+        {
+            "question": "Which of these is likely to have a strong influence on a product's sales?",
+            "options": [
+                "The color of the product packaging",
+                "The day of the week",
+                "Item Visibility",
+                "The store manager's name"
+            ],
+            "correct": 2,
+            "explanation": "Item Visibility typically has a strong influence on sales. Products that are more visible in the store are more likely to be purchased."
+        }
+    ]
+    
+    for i, q in enumerate(questions):
+        st.subheader(f"Question {i+1}: {q['question']}")
+        user_answer = st.radio(f"Select your answer for Question {i+1}:", q['options'], key=f"q{i}")
+        
+        if st.button(f"Check Answer for Question {i+1}", key=f"check{i}"):
+            if q['options'].index(user_answer) == q['correct']:
+                st.success("Correct! Well done!")
+            else:
+                st.error("Not quite right. Let's learn from this!")
+            st.info(f"Explanation: {q['explanation']}")
+        st.write("---")
+
+st.sidebar.markdown("---")
+st.sidebar.info("This app demonstrates the factors influencing BigMart sales. Adjust the parameters and explore the different tabs to learn more!")
+
+# Footer
+st.markdown("""
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0E1117;
+    color: #FAFAFA;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}
+</style>
+<div class="footer">
+    Developed by Venugopal Adep | Data source: BigMart Sales Dataset
+</div>
+""", unsafe_allow_html=True)
+
+# Add some spacing at the bottom to prevent content from being hidden by the footer
+st.write("<br><br><br>", unsafe_allow_html=True)
