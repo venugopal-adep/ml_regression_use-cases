@@ -10,43 +10,49 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import SVR
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
 
 # Set page config
-st.set_page_config(page_title="Graduate Admission Predictor", layout="wide", page_icon="🎓")
+st.set_page_config(page_title="Graduate Admission Predictor", layout="wide", initial_sidebar_state="expanded")
 
-# Custom CSS
+# Custom CSS for better appearance
 st.markdown("""
-    <style>
-    .main {
-        background-color: #f0f2f6;
-    }
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
-        background-color: #4e8df5;
-        border-radius: 4px 4px 0px 0px;
-        gap: 1px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #0c43a3;
-    }
-    .stMarkdown {
-        text-align: left;
-    }
-    .stButton>button {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-    }
-    </style>
+<style>
+.stApp {
+    background-color: #f0f8ff;
+}
+.stButton>button {
+    background-color: #4b0082;
+    color: white;
+}
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2px;
+}
+.stTabs [data-baseweb="tab"] {
+    height: 50px;
+    white-space: pre-wrap;
+    background-color: #e6e6fa;
+    border-radius: 4px 4px 0 0;
+    gap: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.stTabs [aria-selected="true"] {
+    background-color: #8a2be2;
+    color: white;
+}
+.highlight {
+    background-color: #e6e6fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+</style>
 """, unsafe_allow_html=True)
+
+# Title and description
+st.title("🎓 Graduate Admission Predictor")
+st.markdown("**Developed by: Your Name**")
+st.markdown("Explore factors influencing graduate admission chances!")
 
 # Load the data
 @st.cache_data
@@ -55,33 +61,6 @@ def load_data():
     return data
 
 data = load_data()
-
-# Column explanations
-column_explanations = {
-    "GRE Score": "Graduate Record Examination score",
-    "TOEFL Score": "Test of English as a Foreign Language score",
-    "University Rating": "Rating of the undergraduate university (1-5)",
-    "SOP": "Statement of Purpose strength (1-5)",
-    "LOR": "Letter of Recommendation strength (1-5)",
-    "CGPA": "Cumulative Grade Point Average",
-    "Research": "Research experience (0 = No, 1 = Yes)",
-    "Chance of Admit": "Probability of admission (0-1)"
-}
-
-# Sidebar
-st.sidebar.title("🎓 Graduate Admission Predictor")
-
-# Algorithm selection
-algorithm = st.sidebar.selectbox(
-    "Select Regression Algorithm",
-    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
-     "Decision Tree", "Random Forest", "Support Vector Regression"]
-)
-
-# Main content
-st.title("Graduate Admission Predictor")
-st.write('**Developed by : Venugopal Adep**')
-st.write("Predict the chance of admission based on various factors.")
 
 # Prepare the data
 @st.cache_data
@@ -97,6 +76,14 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
+# Sidebar
+st.sidebar.header("Parameters")
+algorithm = st.sidebar.selectbox(
+    "Select Regression Algorithm",
+    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
+     "Decision Tree", "Random Forest", "Support Vector Regression"]
+)
+
 # Model training and prediction
 models = {
     "Linear Regression": LinearRegression(),
@@ -111,64 +98,86 @@ model = models[algorithm]
 model.fit(X_train_scaled, y_train)
 y_pred = model.predict(X_test_scaled)
 
-# Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["📊 Data Analysis", "🧮 Model Performance", "📘 Model Explanation", "🔮 Prediction"])
+# Main content
+tab1, tab2, tab3, tab4 = st.tabs(["📚 Learn", "📊 Data Analysis", "🧮 Model Performance", "🧠 Quiz"])
 
 with tab1:
-    st.header("Data Analysis")
+    st.header("📚 Learn About Graduate Admissions")
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Key Factors in Graduate Admissions</h3>
+    <ul>
+        <li>GRE Score: Graduate Record Examination score</li>
+        <li>TOEFL Score: Test of English as a Foreign Language score</li>
+        <li>University Rating: Rating of the undergraduate university (1-5)</li>
+        <li>Statement of Purpose (SOP): Strength of the SOP (1-5)</li>
+        <li>Letter of Recommendation (LOR): Strength of LOR (1-5)</li>
+        <li>CGPA: Cumulative Grade Point Average</li>
+        <li>Research Experience: Whether the applicant has research experience (0 or 1)</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Why These Factors Matter</h3>
+    <ul>
+        <li>Academic Performance: GRE, TOEFL, and CGPA reflect your academic abilities</li>
+        <li>Research Aptitude: Research experience can be crucial for research-oriented programs</li>
+        <li>Soft Skills: SOP and LOR provide insights into your communication and interpersonal skills</li>
+        <li>University Background: The rating of your undergraduate institution can influence admissions</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Tips for Improving Your Admission Chances</h3>
+    <ul>
+        <li>Focus on maintaining a high CGPA throughout your undergraduate studies</li>
+        <li>Prepare thoroughly for GRE and TOEFL exams</li>
+        <li>Gain research experience through internships or projects</li>
+        <li>Craft a strong Statement of Purpose that highlights your goals and experiences</li>
+        <li>Build relationships with professors for strong Letters of Recommendation</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+with tab2:
+    st.header("📊 Data Analysis")
     
     # Dataset Explorer
     st.subheader("Dataset Explorer")
     st.dataframe(data)
     
-    # Column Explanations
-    st.subheader("Column Explanations")
-    for col, explanation in column_explanations.items():
-        st.write(f"**{col}**: {explanation}")
-    
     # Descriptive Statistics
     st.subheader("Descriptive Statistics")
     st.dataframe(data.describe())
-    
-    # Univariate Analysis
-    st.subheader("Univariate Analysis")
-    feature_univariate = st.selectbox("Select a feature for univariate analysis", data.columns)
-    fig_univariate = px.histogram(data, x=feature_univariate, marginal="box")
-    st.plotly_chart(fig_univariate)
-    
-    # Bivariate Analysis
-    st.subheader("Bivariate Analysis")
-    feature_bivariate = st.selectbox("Select a feature for bivariate analysis with Chance of Admit", 
-                                     [col for col in data.columns if col != 'Chance of Admit'])
-    fig_bivariate = px.scatter(data, x=feature_bivariate, y='Chance of Admit', color="Research", hover_data=['GRE Score', 'TOEFL Score'])
-    st.plotly_chart(fig_bivariate)
     
     # Correlation Heatmap
     st.subheader("Correlation Heatmap")
     corr = data.corr()
     fig_corr = px.imshow(corr, color_continuous_scale='RdBu_r', aspect="auto")
-    st.plotly_chart(fig_corr)
+    st.plotly_chart(fig_corr, use_container_width=True)
     
-    # Crosstab Analysis (for demonstration, we'll create a categorical column)
-    st.subheader("Crosstab Analysis")
-    data['GRE_Category'] = pd.cut(data['GRE Score'], bins=3, labels=['Low', 'Medium', 'High'])
-    crosstab = pd.crosstab(data['GRE_Category'], data['Research'])
-    st.write(crosstab)
-    fig_crosstab = px.bar(crosstab, barmode='group')
-    st.plotly_chart(fig_crosstab)
+    # Feature Distribution
+    st.subheader("Feature Distribution")
+    feature = st.selectbox("Select a feature to visualize:", data.columns)
+    fig_dist = px.histogram(data, x=feature, marginal="box", hover_data=data.columns)
+    st.plotly_chart(fig_dist, use_container_width=True)
     
-    # Word Cloud (for demonstration, we'll create a text column)
-    st.subheader("Word Cloud")
-    data['Comments'] = data.apply(lambda row: f"GRE:{row['GRE Score']} TOEFL:{row['TOEFL Score']} CGPA:{row['CGPA']}", axis=1)
-    text = ' '.join(data['Comments'])
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
-    fig_wordcloud, ax = plt.subplots()
-    ax.imshow(wordcloud, interpolation='bilinear')
-    ax.axis('off')
-    st.pyplot(fig_wordcloud)
+    # Scatter Plot
+    st.subheader("Scatter Plot")
+    x_axis = st.selectbox("Select X-axis:", data.columns, index=0)
+    y_axis = st.selectbox("Select Y-axis:", data.columns, index=-1)
+    color_by = st.selectbox("Color by:", data.columns)
+    fig_scatter = px.scatter(data, x=x_axis, y=y_axis, color=color_by, hover_data=data.columns)
+    st.plotly_chart(fig_scatter, use_container_width=True)
 
-with tab2:
-    st.header("Model Performance")
+with tab3:
+    st.header("🧮 Model Performance")
+    
     col1, col2 = st.columns(2)
     
     with col1:
@@ -178,7 +187,7 @@ with tab2:
         fig.add_trace(go.Scatter(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], 
                                  mode='lines', name='Ideal'))
         fig.update_layout(xaxis_title="Actual Chance of Admit", yaxis_title="Predicted Chance of Admit")
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
         
     with col2:
         st.subheader("Model Performance Metrics")
@@ -190,98 +199,89 @@ with tab2:
         }
         for metric, value in metrics.items():
             st.metric(metric, f"{value:.4f}")
-        
-    if algorithm in ["Decision Tree", "Random Forest"]:
-        st.subheader("Feature Importance")
-        importances = model.feature_importances_
-        feature_imp = pd.DataFrame({'feature': X.columns, 'importance': importances})
-        feature_imp = feature_imp.sort_values('importance', ascending=False).reset_index(drop=True)
-        fig = px.bar(feature_imp, x='importance', y='feature', orientation='h')
-        st.plotly_chart(fig)
-
-with tab3:
-    st.header("Model Explanation")
     
-    if algorithm == "Linear Regression":
-        st.write("""
-        Linear Regression finds the best linear relationship between the input features and the target variable (Chance of Admit).
-        It assumes that the chance of admission can be predicted as a weighted sum of the input features.
-
-        The equation is: Chance of Admit = w1*x1 + w2*x2 + ... + wn*xn + b
-
-        Where w1, w2, ..., wn are the weights for each feature, x1, x2, ..., xn are the feature values, and b is the bias term.
-        """)
-
-    elif algorithm == "Ridge Regression":
-        st.write("""
-        Ridge Regression is similar to Linear Regression but adds a penalty term to prevent overfitting.
-        It's useful when there might be high correlations between input features.
-
-        The objective is to minimize: ||y - Xw||² + α||w||²
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Lasso Regression":
-        st.write("""
-        Lasso Regression also adds a penalty term, but it can completely eliminate the impact of less important features.
-        This makes it useful for feature selection.
-
-        The objective is to minimize: ||y - Xw||² + α||w||₁
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Decision Tree":
-        st.write("""
-        Decision Tree creates a tree-like model of decisions based on the input features.
-        It splits the data based on different conditions to make predictions.
-
-        For example: If (GRE Score > 320) and (CGPA > 8.5), then predict high chance of admission.
-
-        The tree is created by minimizing impurity (often measured by mean squared error for regression) at each split.
-        """)
-
-    elif algorithm == "Random Forest":
-        st.write("""
-        Random Forest is an ensemble of Decision Trees. It creates multiple trees and aggregates their predictions.
-        This helps to reduce overfitting and improve generalization.
-
-        The final prediction is typically the average of all individual tree predictions:
-        Prediction = (Tree1 + Tree2 + ... + TreeN) / N
-
-        Where N is the number of trees in the forest.
-        """)
-
-    elif algorithm == "Support Vector Regression":
-        st.write("""
-        Support Vector Regression tries to find a function that deviates from y by a value no greater than ε for each training point x.
-
-        It aims to solve:
-        minimize 1/2 ||w||² subject to |y - f(x)| ≤ ε
-
-        Where f(x) is the prediction function and ε is the maximum allowed deviation.
-        """)
+    if algorithm in ["Linear Regression", "Ridge Regression", "Lasso Regression"]:
+        st.subheader("Feature Coefficients")
+        coeffs = pd.DataFrame({'feature': X.columns, 'coefficient': model.coef_})
+        coeffs = coeffs.sort_values('coefficient', key=abs, ascending=False).reset_index(drop=True)
+        fig_coeffs = px.bar(coeffs, x='coefficient', y='feature', orientation='h')
+        st.plotly_chart(fig_coeffs, use_container_width=True)
+    
+    elif algorithm in ["Decision Tree", "Random Forest"]:
+        st.subheader("Feature Importance")
+        importances = pd.DataFrame({'feature': X.columns, 'importance': model.feature_importances_})
+        importances = importances.sort_values('importance', ascending=False).reset_index(drop=True)
+        fig_importance = px.bar(importances, x='importance', y='feature', orientation='h')
+        st.plotly_chart(fig_importance, use_container_width=True)
 
 with tab4:
-    st.header("Make a Prediction")
-    col1, col2 = st.columns(2)
+    st.header("🧠 Test Your Knowledge")
     
-    with col1:
-        gre_score = st.number_input("GRE Score", min_value=200, max_value=340, value=300)
-        toefl_score = st.number_input("TOEFL Score", min_value=0, max_value=120, value=100)
-        university_rating = st.slider("University Rating", 1, 5, 3)
-        sop = st.slider("SOP", 1.0, 5.0, 3.0, 0.5)
+    questions = [
+        {
+            "question": "Which of these factors is NOT typically considered in graduate admissions?",
+            "options": [
+                "GRE Score",
+                "TOEFL Score",
+                "High School GPA",
+                "Research Experience"
+            ],
+            "correct": 2,
+            "explanation": "High School GPA is typically not considered for graduate admissions. The focus is more on undergraduate performance and standardized test scores like GRE and TOEFL."
+        },
+        {
+            "question": "What does CGPA stand for?",
+            "options": [
+                "College Grade Point Average",
+                "Cumulative Grade Point Average",
+                "Calculated Grade Point Assessment",
+                "Complete Grade Performance Analysis"
+            ],
+            "correct": 1,
+            "explanation": "CGPA stands for Cumulative Grade Point Average. It's a measure of a student's overall academic performance across all courses."
+        },
+        {
+            "question": "Which of these is likely to have the strongest positive correlation with admission chances?",
+            "options": [
+                "Age of the applicant",
+                "Distance of the university from home",
+                "CGPA",
+                "Number of extracurricular activities"
+            ],
+            "correct": 2,
+            "explanation": "CGPA (Cumulative Grade Point Average) typically has a strong positive correlation with admission chances, as it directly reflects academic performance."
+        }
+    ]
     
-    with col2:
-        lor = st.slider("LOR", 1.0, 5.0, 3.0, 0.5)
-        cgpa = st.number_input("CGPA", min_value=0.0, max_value=10.0, value=8.0, step=0.1)
-        research = st.selectbox("Research Experience", [0, 1])
-
-    if st.button("🎓 Predict Chance of Admission", key="predict_button"):
-        input_data = pd.DataFrame([[gre_score, toefl_score, university_rating, sop, lor, cgpa, research]], 
-                                  columns=['GRE Score', 'TOEFL Score', 'University Rating', 'SOP', 'LOR', 'CGPA', 'Research'])
+    for i, q in enumerate(questions):
+        st.subheader(f"Question {i+1}: {q['question']}")
+        user_answer = st.radio(f"Select your answer for Question {i+1}:", q['options'], key=f"q{i}")
         
-        input_scaled = scaler.transform(input_data)
-        prediction = model.predict(input_scaled)
-        st.success(f"Predicted Chance of Admission: {prediction[0]:.2%}")
+        if st.button(f"Check Answer for Question {i+1}", key=f"check{i}"):
+            if q['options'].index(user_answer) == q['correct']:
+                st.success("Correct! Well done!")
+            else:
+                st.error("Not quite right. Let's learn from this!")
+            st.info(f"Explanation: {q['explanation']}")
+        st.write("---")
+
+st.sidebar.markdown("---")
+st.sidebar.info("This app demonstrates the factors influencing graduate admission chances. Adjust the parameters and explore the different tabs to learn more!")
+
+# Prediction Section
+st.sidebar.header("Make a Prediction")
+gre_score = st.sidebar.slider("GRE Score", 200, 340, 300)
+toefl_score = st.sidebar.slider("TOEFL Score", 0, 120, 100)
+university_rating = st.sidebar.slider("University Rating", 1, 5, 3)
+sop = st.sidebar.slider("SOP", 1.0, 5.0, 3.0, 0.5)
+lor = st.sidebar.slider("LOR", 1.0, 5.0, 3.0, 0.5)
+cgpa = st.sidebar.slider("CGPA", 0.0, 10.0, 8.0, 0.1)
+research = st.sidebar.selectbox("Research Experience", [0, 1])
+
+if st.sidebar.button("🎓 Predict Chance of Admission"):
+    input_data = pd.DataFrame([[gre_score, toefl_score, university_rating, sop, lor, cgpa, research]], 
+                              columns=['GRE Score', 'TOEFL Score', 'University Rating', 'SOP', 'LOR', 'CGPA', 'Research'])
+    
+    input_scaled = scaler.transform(input_data)
+    prediction = model.predict(input_scaled)
+    st.sidebar.success(f"Predicted Chance of Admission: {prediction[0]:.2%}")
