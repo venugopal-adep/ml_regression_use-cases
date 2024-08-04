@@ -11,43 +11,49 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.svm import SVR
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.impute import SimpleImputer
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
 
 # Set page config
 st.set_page_config(page_title="Airbnb Price Predictor", layout="wide", page_icon="🏠")
 
 # Custom CSS
 st.markdown("""
-    <style>
-    .main {
-        background-color: #f0f2f6;
-    }
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-    }
-    .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
-        background-color: #4e8df5;
-        border-radius: 4px 4px 0px 0px;
-        gap: 1px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #0c43a3;
-    }
-    .stMarkdown {
-        text-align: left;
-    }
-    .stButton>button {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-    }
-    </style>
+<style>
+.stApp {
+    background-color: #f0f8ff;
+}
+.stButton>button {
+    background-color: #ff5a5f;
+    color: white;
+}
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2px;
+}
+.stTabs [data-baseweb="tab"] {
+    height: 50px;
+    white-space: pre-wrap;
+    background-color: #e6e6fa;
+    border-radius: 4px 4px 0 0;
+    gap: 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.stTabs [aria-selected="true"] {
+    background-color: #ff5a5f;
+    color: white;
+}
+.highlight {
+    background-color: #e6e6fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+</style>
 """, unsafe_allow_html=True)
+
+# Title and description
+st.title("🏠 Airbnb Price Predictor")
+st.markdown("**Developed by: Venugopal Adep**")
+st.markdown("Explore factors influencing Airbnb prices and predict listing prices!")
 
 # Load the data
 @st.cache_data
@@ -56,44 +62,6 @@ def load_data():
     return data
 
 data = load_data()
-
-# Column explanations
-column_explanations = {
-    "city": "City where the Airbnb is located",
-    "longitude": "Longitude coordinate of the Airbnb",
-    "latitude": "Latitude coordinate of the Airbnb",
-    "review_scores_rating": "Overall review score for the Airbnb",
-    "number_of_reviews": "Number of reviews received",
-    "minimum_nights": "Minimum number of nights required for booking",
-    "security_deposit": "Security deposit amount",
-    "cleaning_fee": "Cleaning fee charged",
-    "accommodates": "Number of guests the Airbnb can accommodate",
-    "bathrooms": "Number of bathrooms",
-    "bedrooms": "Number of bedrooms",
-    "beds": "Number of beds",
-    "property_type": "Type of property (e.g., Apartment, House)",
-    "room_type": "Type of room (e.g., Entire home/apt, Private room)",
-    "availability_365": "Number of days the Airbnb is available in a year",
-    "host_identity_verified": "Whether the host's identity is verified (0 or 1)",
-    "host_is_superhost": "Whether the host is a superhost (0 or 1)",
-    "cancellation_policy": "Cancellation policy type",
-    "price": "Price per night (Target Variable)"
-}
-
-# Sidebar
-st.sidebar.title("🏠 Airbnb Price Predictor")
-
-# Algorithm selection
-algorithm = st.sidebar.selectbox(
-    "Select Regression Algorithm",
-    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
-     "Decision Tree", "Random Forest", "Support Vector Regression"]
-)
-
-# Main content
-st.title("Airbnb Price Predictor")
-st.write('**Developed by : Venugopal Adep**')
-st.write("Predict the price of Airbnb listings based on various features.")
 
 # Prepare the data
 @st.cache_data
@@ -119,6 +87,14 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
+# Sidebar
+st.sidebar.header("Parameters")
+algorithm = st.sidebar.selectbox(
+    "Select Regression Algorithm",
+    ["Linear Regression", "Ridge Regression", "Lasso Regression", 
+     "Decision Tree", "Random Forest", "Support Vector Regression"]
+)
+
 # Model training and prediction
 models = {
     "Linear Regression": LinearRegression(),
@@ -133,70 +109,99 @@ model = models[algorithm]
 model.fit(X_train_scaled, y_train)
 y_pred = model.predict(X_test_scaled)
 
-# Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["📊 Data Analysis", "🧮 Model Performance", "📘 Model Explanation", "🔮 Prediction"])
+# Main content
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📚 Learn", "📊 Data Analysis", "🧮 Model Performance", "🔮 Predictions", "🧠 Quiz"])
 
 with tab1:
-    st.header("Data Analysis")
+    st.header("📚 Learn About Airbnb Pricing")
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Key Factors Influencing Airbnb Prices</h3>
+    <ul>
+        <li>Location: City and specific neighborhood</li>
+        <li>Property Features: Type, number of rooms, amenities</li>
+        <li>Capacity: Number of guests it can accommodate</li>
+        <li>Reviews: Rating and number of reviews</li>
+        <li>Host Status: Superhost status, identity verification</li>
+        <li>Booking Policies: Minimum nights, cancellation policy</li>
+        <li>Fees: Cleaning fee, security deposit</li>
+        <li>Availability: Number of days available per year</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Why These Factors Matter</h3>
+    <ul>
+        <li>Location: Affects demand and local market rates</li>
+        <li>Property Features: Determine the overall value and appeal</li>
+        <li>Capacity: Larger properties can often command higher prices</li>
+        <li>Reviews: Influence guest trust and willingness to book</li>
+        <li>Host Status: Can affect perceived reliability and quality</li>
+        <li>Booking Policies: Impact guest flexibility and booking decisions</li>
+        <li>Fees: Additional costs that affect the total price for guests</li>
+        <li>Availability: Can indicate popularity and affect pricing strategy</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="highlight">
+    <h3>Tips for Understanding Airbnb Pricing</h3>
+    <ul>
+        <li>Research local market rates and adjust prices accordingly</li>
+        <li>Highlight unique features of your property to justify higher prices</li>
+        <li>Maintain high ratings and respond to reviews to build trust</li>
+        <li>Consider becoming a Superhost to potentially charge premium rates</li>
+        <li>Adjust prices based on seasonality and local events</li>
+        <li>Be transparent about all fees to avoid guest surprises</li>
+        <li>Use dynamic pricing to optimize occupancy and revenue</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+with tab2:
+    st.header("📊 Data Analysis")
     
     # Dataset Explorer
     st.subheader("Dataset Explorer")
     st.dataframe(data.head())
     
-    # Column Explanations
-    st.subheader("Column Explanations")
-    for col, explanation in column_explanations.items():
-        st.write(f"**{col}**: {explanation}")
-    
     # Descriptive Statistics
     st.subheader("Descriptive Statistics")
     st.dataframe(data.describe())
     
-    # Univariate Analysis
-    st.subheader("Univariate Analysis")
+    # Feature Distribution
+    st.subheader("Feature Distribution")
     numeric_columns = data.select_dtypes(include=[np.number]).columns
-    feature_univariate = st.selectbox("Select a feature for univariate analysis", numeric_columns)
-    fig_univariate = px.histogram(data, x=feature_univariate, marginal="box")
-    st.plotly_chart(fig_univariate)
+    feature = st.selectbox("Select a feature to visualize:", numeric_columns)
+    fig_dist = px.histogram(data, x=feature, marginal="box", hover_data=data.columns)
+    st.plotly_chart(fig_dist, use_container_width=True)
     
-    # Bivariate Analysis
-    st.subheader("Bivariate Analysis")
-    feature_bivariate = st.selectbox("Select a feature for bivariate analysis with Price", 
-                                     [col for col in numeric_columns if col != 'price'])
-    fig_bivariate = px.scatter(data, x=feature_bivariate, y='price', color="city", hover_data=['property_type'])
-    st.plotly_chart(fig_bivariate)
+    # Scatter Plot
+    st.subheader("Scatter Plot")
+    x_axis = st.selectbox("Select X-axis:", numeric_columns, index=0)
+    y_axis = st.selectbox("Select Y-axis:", numeric_columns, index=min(1, len(numeric_columns) - 1))
+    color_by = st.selectbox("Color by:", data.columns, index=min(2, len(data.columns) - 1))
+    fig_scatter = px.scatter(data, x=x_axis, y=y_axis, color=color_by, hover_data=data.columns)
+    st.plotly_chart(fig_scatter, use_container_width=True)
     
     # Correlation Heatmap
     st.subheader("Correlation Heatmap")
     corr = data[numeric_columns].corr()
     fig_corr = px.imshow(corr, color_continuous_scale='RdBu_r', aspect="auto")
-    st.plotly_chart(fig_corr)
+    st.plotly_chart(fig_corr, use_container_width=True)
     
-    # Crosstab Analysis
-    st.subheader("Crosstab Analysis")
-    categorical_columns = ['city', 'property_type', 'room_type', 'cancellation_policy']
-    cat_col1, cat_col2 = st.columns(2)
-    with cat_col1:
-        cat_feature1 = st.selectbox("Select first categorical feature", categorical_columns)
-    with cat_col2:
-        cat_feature2 = st.selectbox("Select second categorical feature", 
-                                    [col for col in categorical_columns if col != cat_feature1])
-    crosstab = pd.crosstab(data[cat_feature1], data[cat_feature2])
-    st.write(crosstab)
-    fig_crosstab = px.bar(crosstab, barmode='group')
-    st.plotly_chart(fig_crosstab)
-    
-    # Word Cloud
-    st.subheader("Word Cloud of Property Types")
-    text = ' '.join(data['property_type'])
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
-    fig_wordcloud, ax = plt.subplots()
-    ax.imshow(wordcloud, interpolation='bilinear')
-    ax.axis('off')
-    st.pyplot(fig_wordcloud)
+    # Price by City
+    st.subheader("Average Price by City")
+    fig_city = px.bar(data.groupby('city')['price'].mean().reset_index(), x='city', y='price')
+    st.plotly_chart(fig_city, use_container_width=True)
 
-with tab2:
-    st.header("Model Performance")
+with tab3:
+    st.header("🧮 Model Performance")
+    
     col1, col2 = st.columns(2)
     
     with col1:
@@ -206,7 +211,7 @@ with tab2:
         fig.add_trace(go.Scatter(x=[y_test.min(), y_test.max()], y=[y_test.min(), y_test.max()], 
                                  mode='lines', name='Ideal'))
         fig.update_layout(xaxis_title="Actual Price", yaxis_title="Predicted Price")
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
         
     with col2:
         st.subheader("Model Performance Metrics")
@@ -217,157 +222,161 @@ with tab2:
             "R2 Score": r2_score(y_test, y_pred)
         }
         for metric, value in metrics.items():
-            st.metric(metric, f"{value:.2f}")
-        
-    if algorithm in ["Decision Tree", "Random Forest"]:
-        st.subheader("Feature Importance")
-        importances = model.feature_importances_
-        feature_imp = pd.DataFrame({'feature': X.columns, 'importance': importances})
-        feature_imp = feature_imp.sort_values('importance', ascending=False).reset_index(drop=True)
-        fig = px.bar(feature_imp, x='importance', y='feature', orientation='h')
-        st.plotly_chart(fig)
-
-with tab3:
-    st.header("Model Explanation")
+            st.metric(metric, f"{value:.4f}")
     
-    if algorithm == "Linear Regression":
-        st.write("""
-        Linear Regression finds the best linear relationship between the input features and the target variable (Price).
-        It assumes that the price can be predicted as a weighted sum of the input features.
-
-        The equation is: Price = w1*x1 + w2*x2 + ... + wn*xn + b
-
-        Where w1, w2, ..., wn are the weights for each feature, x1, x2, ..., xn are the feature values, and b is the bias term.
-        """)
-
-    elif algorithm == "Ridge Regression":
-        st.write("""
-        Ridge Regression is similar to Linear Regression but adds a penalty term to prevent overfitting.
-        It's useful when there might be high correlations between input features.
-
-        The objective is to minimize: ||y - Xw||² + α||w||²
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Lasso Regression":
-        st.write("""
-        Lasso Regression also adds a penalty term, but it can completely eliminate the impact of less important features.
-        This makes it useful for feature selection.
-
-        The objective is to minimize: ||y - Xw||² + α||w||₁
-
-        Where α is the regularization strength, controlling the impact of the penalty term.
-        """)
-
-    elif algorithm == "Decision Tree":
-        st.write("""
-        Decision Tree creates a tree-like model of decisions based on the input features.
-        It splits the data based on different conditions to make predictions.
-
-        For example: If (review_scores_rating > 90) and (accommodates > 4), then predict high price.
-
-        The tree is created by minimizing impurity (often measured by mean squared error for regression) at each split.
-        """)
-
-    elif algorithm == "Random Forest":
-        st.write("""
-        Random Forest is an ensemble of Decision Trees. It creates multiple trees and aggregates their predictions.
-        This helps to reduce overfitting and improve generalization.
-
-        The final prediction is typically the average of all individual tree predictions:
-        Prediction = (Tree1 + Tree2 + ... + TreeN) / N
-
-        Where N is the number of trees in the forest.
-        """)
-
-    elif algorithm == "Support Vector Regression":
-        st.write("""
-        Support Vector Regression tries to find a function that deviates from y by a value no greater than ε for each training point x.
-
-        It aims to solve:
-        minimize 1/2 ||w||² subject to |y - f(x)| ≤ ε
-
-        Where f(x) is the prediction function and ε is the maximum allowed deviation.
-        """)
+    if algorithm in ["Linear Regression", "Ridge Regression", "Lasso Regression"]:
+        st.subheader("Feature Coefficients")
+        coeffs = pd.DataFrame({'feature': X.columns, 'coefficient': model.coef_})
+        coeffs = coeffs.sort_values('coefficient', key=abs, ascending=False).reset_index(drop=True)
+        fig_coeffs = px.bar(coeffs, x='coefficient', y='feature', orientation='h')
+        st.plotly_chart(fig_coeffs, use_container_width=True)
+    
+    elif algorithm in ["Decision Tree", "Random Forest"]:
+        st.subheader("Feature Importance")
+        importances = pd.DataFrame({'feature': X.columns, 'importance': model.feature_importances_})
+        importances = importances.sort_values('importance', ascending=False).reset_index(drop=True)
+        fig_importance = px.bar(importances, x='importance', y='feature', orientation='h')
+        st.plotly_chart(fig_importance, use_container_width=True)
 
 with tab4:
-    st.header("Make a Prediction")
+    st.header("🔮 Make a Prediction")
+    
     col1, col2 = st.columns(2)
     
     with col1:
         city = st.selectbox("City", data['city'].unique())
-        longitude = st.number_input("Longitude", value=data['longitude'].mean())
-        latitude = st.number_input("Latitude", value=data['latitude'].mean())
-        review_scores_rating = st.slider("Review Score Rating", 0, 100, 90)
-        number_of_reviews = st.number_input("Number of Reviews", value=0)
-        minimum_nights = st.number_input("Minimum Nights", value=1)
-        security_deposit = st.number_input("Security Deposit", value=0)
-        cleaning_fee = st.number_input("Cleaning Fee", value=0)
-        accommodates = st.number_input("Accommodates", value=2)
-    
-    with col2:
+        property_type = st.selectbox("Property Type", data['property_type'].unique())
+        room_type = st.selectbox("Room Type", data['room_type'].unique())
+        accommodates = st.number_input("Accommodates", value=2, min_value=1)
         bathrooms = st.number_input("Bathrooms", value=1.0, step=0.5)
         bedrooms = st.number_input("Bedrooms", value=1)
         beds = st.number_input("Beds", value=1)
-        property_type = st.selectbox("Property Type", data['property_type'].unique())
-        room_type = st.selectbox("Room Type", data['room_type'].unique())
+    
+    with col2:
+        review_scores_rating = st.slider("Review Score Rating", 0, 100, 90)
+        number_of_reviews = st.number_input("Number of Reviews", value=0)
+        minimum_nights = st.number_input("Minimum Nights", value=1)
         availability_365 = st.slider("Availability (days/year)", 0, 365, 365)
-        host_identity_verified = st.selectbox("Host Identity Verified", [0, 1])
         host_is_superhost = st.selectbox("Host is Superhost", [0, 1])
         cancellation_policy = st.selectbox("Cancellation Policy", data['cancellation_policy'].unique())
 
-    if st.button("🏠 Predict Price", key="predict_button"):
-        # Create a DataFrame with all features, initialized with zeros
+    if st.button("🏠 Predict Price"):
         input_data = pd.DataFrame(0, index=[0], columns=X.columns)
         
-        # Fill in the values for the features we have
         input_data['city'] = data['city'].unique().tolist().index(city)
-        input_data['longitude'] = longitude
-        input_data['latitude'] = latitude
-        input_data['review_scores_rating'] = review_scores_rating
-        input_data['number_of_reviews'] = number_of_reviews
-        input_data['minimum_nights'] = minimum_nights
-        input_data['security_deposit'] = security_deposit
-        input_data['cleaning_fee'] = cleaning_fee
+        input_data['property_type'] = data['property_type'].unique().tolist().index(property_type)
+        input_data['room_type'] = data['room_type'].unique().tolist().index(room_type)
         input_data['accommodates'] = accommodates
         input_data['bathrooms'] = bathrooms
         input_data['bedrooms'] = bedrooms
         input_data['beds'] = beds
-        input_data['property_type'] = data['property_type'].unique().tolist().index(property_type)
-        input_data['room_type'] = data['room_type'].unique().tolist().index(room_type)
+        input_data['review_scores_rating'] = review_scores_rating
+        input_data['number_of_reviews'] = number_of_reviews
+        input_data['minimum_nights'] = minimum_nights
         input_data['availability_365'] = availability_365
-        input_data['host_identity_verified'] = host_identity_verified
         input_data['host_is_superhost'] = host_is_superhost
         input_data['cancellation_policy'] = data['cancellation_policy'].unique().tolist().index(cancellation_policy)
         
-        # Impute any missing values in the input data
         input_data = pd.DataFrame(imputer.transform(input_data), columns=input_data.columns)
         
         input_scaled = scaler.transform(input_data)
         prediction = model.predict(input_scaled)
         st.success(f"Predicted Price: ${prediction[0]:.2f} per night")
+        
+        # Radar chart for input features
+        features = ['accommodates', 'bathrooms', 'bedrooms', 'beds', 'review_scores_rating', 'number_of_reviews', 'minimum_nights', 'availability_365']
+        values = input_data[features].values[0].tolist()
+        
+        fig = go.Figure(data=go.Scatterpolar(
+          r=values,
+          theta=features,
+          fill='toself'
+        ))
 
-# Run the Streamlit app
-if __name__ == "__main__":
-    st.sidebar.info("This app predicts Airbnb prices based on various features.")
+        fig.update_layout(
+          polar=dict(
+            radialaxis=dict(
+              visible=True,
+              range=[0, max(values)]
+            )),
+          showlegend=False
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
 
-    # Add a footer
-    st.markdown("""
-    <style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #0E1117;
-        color: #FAFAFA;
-        text-align: center;
-        padding: 10px;
-        font-size: 12px;
-    }
-    </style>
-    <div class="footer">
-        Developed by Venugopal Adep | Data source: https://www.kaggle.com/datasets/adepvenugopal/airbnb-price
-    </div>
-    """, unsafe_allow_html=True)
+with tab5:
+    st.header("🧠 Test Your Knowledge")
+    
+    questions = [
+        {
+            "question": "Which of these factors is typically NOT considered in Airbnb price prediction?",
+            "options": [
+                "Number of bedrooms",
+                "Host's age",
+                "Review score rating",
+                "City location"
+            ],
+            "correct": 1,
+            "explanation": "Host's age is typically not considered in Airbnb price prediction. The focus is more on property features, location, and booking-related factors."
+        },
+        {
+            "question": "What does 'Superhost' status indicate?",
+            "options": [
+                "The host owns multiple properties",
+                "The host has achieved high standards of hospitality",
+                "The property is a luxury listing",
+                "The host has been on Airbnb for over 10 years"
+            ],
+            "correct": 1,
+            "explanation": "Superhost status indicates that the host has achieved and maintained high standards of hospitality, as recognized by Airbnb."
+        },
+        {
+            "question": "Which of these is likely to have a strong positive influence on an Airbnb's price?",
+            "options": [
+                "A strict cancellation policy",
+                "Being located far from the city center",
+                "A high number of positive reviews",
+                "Requiring a long minimum stay"
+            ],
+            "correct": 2,
+            "explanation": "A high number of positive reviews typically has a strong positive influence on an Airbnb's price. It builds trust with potential guests and can justify higher rates."
+        }
+    ]
+    
+    for i, q in enumerate(questions):
+        st.subheader(f"Question {i+1}: {q['question']}")
+        user_answer = st.radio(f"Select your answer for Question {i+1}:", q['options'], key=f"q{i}")
+        
+        if st.button(f"Check Answer for Question {i+1}", key=f"check{i}"):
+            if q['options'].index(user_answer) == q['correct']:
+                st.success("Correct! Well done!")
+            else:
+                st.error("Not quite right. Let's learn from this!")
+            st.info(f"Explanation: {q['explanation']}")
+        st.write("---")
+
+st.sidebar.markdown("---")
+st.sidebar.info("This app demonstrates the factors influencing Airbnb prices. Adjust the parameters and explore the different tabs to learn more!")
+
+# Footer
+st.markdown("""
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0E1117;
+    color: #FAFAFA;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}
+</style>
+<div class="footer">
+    Developed by Venugopal Adep | Data source: Airbnb Prices Dataset
+</div>
+""", unsafe_allow_html=True)
+
+# Add some spacing at the bottom to prevent content from being hidden by the footer
+st.write("<br><br><br>", unsafe_allow_html=True)
